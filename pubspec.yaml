@@ -29,6 +29,17 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  stacked: ^2.3.12
+  get: ^4.6.5
+  get_it: ^7.2.0
+  intl: any #Currency formatting
+  flutter_svg: ^1.1.1+1 #load svg format images
+  equatable: ^2.0.3
+  shared_preferences: ^2.0.15
+  cached_network_image: ^3.2.1
+  build_runner: ^2.1.10
+  stacked_generator: ^0.5.6
+  flutter_launcher_icons: ^0.10.0
 
 
   # The following adds the Cupertino Icons font to your application.
