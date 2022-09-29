@@ -1,5 +1,3 @@
 import 'package:flutter/material.dart';
 
-class SplashScreenViewModel extends ChangeNotifier{
-  
-}
+class SplashScreenViewModel extends ChangeNotifier {}

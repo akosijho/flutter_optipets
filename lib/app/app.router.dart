@@ -7,8 +7,6 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:stacked/stacked.dart';
-import 'package:stacked/stacked_annotations.dart';
-
 import '../views/splash_screen/splash_screen_view.dart';
 
 class Routes {

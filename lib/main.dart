@@ -10,7 +10,8 @@ import 'package:get/get_navigation/get_navigation.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_){
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
     runApp(GetMaterialApp(
       theme: MyThemes.light,
       onGenerateRoute: StackedRouter().onGenerateRoute,
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }
