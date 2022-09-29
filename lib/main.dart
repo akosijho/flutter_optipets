@@ -1,7 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_optipets/app/app.locator.dart';
+import 'package:flutter_optipets/app/app.router.dart';
+import 'package:flutter_optipets/core/services/navigation/navigation_sevice.dart';
+import 'package:flutter_optipets/utils/my_themes.dart';
+import 'package:flutter_optipets/views/splash_screen/splash_screen_view.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  setupLocator();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_){
+    runApp(GetMaterialApp(
+      theme: MyThemes.light,
+      onGenerateRoute: StackedRouter().onGenerateRoute,
+      navigatorKey: locator<NavigationService>().navigatorKey,
+      debugShowCheckedModeBanner: false,
+      title: "Optipets",
+    ));
+  });
+  //runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -24,7 +42,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: SplashScreen(),
     );
   }
 }
