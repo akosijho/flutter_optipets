@@ -1,4 +1,4 @@
-package com.example.flutter_optipets
+package com.boholvet.optipets
 
 import io.flutter.embedding.android.FlutterActivity
 

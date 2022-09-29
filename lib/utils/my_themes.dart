@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/utils/my_colors.dart';
 
-
 class MyThemes {
   static ThemeData dark = ThemeData(
-    fontFamily: "SF-Pro", 
+    fontFamily: "SF-Pro",
     scaffoldBackgroundColor: MyColors.scaffoldBg,
     primaryColor: MyColors.primary,
     //primaryColor: Colors.black,
@@ -71,17 +70,32 @@ class MyThemes {
     splashColor: MyColors.yellow.withOpacity(0.1),
     highlightColor: MyColors.yellow.withOpacity(0.1),
     hoverColor: MyColors.yellow.withOpacity(0.1),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: const BorderSide(),
+      ),
+      contentPadding: const EdgeInsets.only(top: 8, left: 8),
+      fillColor: MyColors.scaffoldBg,
+    ),
     buttonTheme: const ButtonThemeData(
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
         minWidth: 10,
         height: 10),
     visualDensity: VisualDensity.adaptivePlatformDensity,
     textTheme: TextTheme(
+        
         headline1: const TextStyle(
             fontSize: 50,
             height: 1.2,
             fontWeight: FontWeight.w700,
             color: MyColors.black),
+        headline3: const TextStyle(
+          fontSize: 48,
+          fontWeight: FontWeight.w700,
+          color: MyColors.scaffoldBg,
+        ),
         button: TextStyle(
           color: const Color(0xFF1F232A).withOpacity(
             0.8,
