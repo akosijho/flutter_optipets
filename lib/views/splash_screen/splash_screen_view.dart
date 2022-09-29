@@ -11,6 +11,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<SplashScreenViewModel>.reactive(
         viewModelBuilder: () => SplashScreenViewModel(),
+        onModelReady: (model) => model.init(),
         builder: (context, child, viewModel) {
           return Scaffold(
             backgroundColor: MyColors.blue1,
