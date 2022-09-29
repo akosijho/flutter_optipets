@@ -9,16 +9,16 @@ class MyThemes {
     primaryColor: MyColors.primary,
     //primaryColor: Colors.black,
     brightness: Brightness.dark,
-    secondaryHeaderColor: Color(0xFF33363C),
+    secondaryHeaderColor: const Color(0xFF33363C),
     bottomAppBarColor: MyColors.black,
     toggleableActiveColor: MyColors.primary,
-    buttonTheme: ButtonThemeData(
+    buttonTheme: const ButtonThemeData(
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
         minWidth: 10,
         height: 10),
     visualDensity: VisualDensity.adaptivePlatformDensity,
     textTheme: TextTheme(
-        headline1: TextStyle(
+        headline1: const TextStyle(
             fontSize: 50,
             height: 1.2,
             fontWeight: FontWeight.w700,
@@ -36,12 +36,12 @@ class MyThemes {
             decoration: TextDecoration.underline,
             height: 1.6,
             fontSize: 12),
-        headline5: TextStyle(
+        headline5: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w400,
             decoration: TextDecoration.underline,
             color: Colors.white),
-        bodyText1: TextStyle(
+        bodyText1: const TextStyle(
             fontSize: 16,
             height: 1.5,
             fontWeight: FontWeight.w600,
@@ -53,7 +53,7 @@ class MyThemes {
           fontSize: 16,
           fontWeight: FontWeight.w600,
         ),
-        headline2: TextStyle(
+        headline2: const TextStyle(
             fontSize: 32,
             height: 1.25,
             fontWeight: FontWeight.w700,
@@ -65,54 +65,54 @@ class MyThemes {
     scaffoldBackgroundColor: Colors.white,
     brightness: Brightness.light,
     primaryColor: MyColors.blue1,
-    secondaryHeaderColor: Color(0xFFFFFAF6),
+    secondaryHeaderColor: const Color(0xFFFFFAF6),
     bottomAppBarColor: Colors.white,
     toggleableActiveColor: MyColors.blueButtonColor,
     splashColor: MyColors.yellow.withOpacity(0.1),
     highlightColor: MyColors.yellow.withOpacity(0.1),
     hoverColor: MyColors.yellow.withOpacity(0.1),
-    buttonTheme: ButtonThemeData(
+    buttonTheme: const ButtonThemeData(
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
         minWidth: 10,
         height: 10),
     visualDensity: VisualDensity.adaptivePlatformDensity,
     textTheme: TextTheme(
-        headline1: TextStyle(
+        headline1: const TextStyle(
             fontSize: 50,
             height: 1.2,
             fontWeight: FontWeight.w700,
             color: MyColors.black),
         button: TextStyle(
-          color: Color(0xFF1F232A).withOpacity(
+          color: const Color(0xFF1F232A).withOpacity(
             0.8,
           ),
           fontSize: 16,
           fontWeight: FontWeight.w600,
         ),
         headline4: TextStyle(
-            color: Color(0xFF1F232A).withOpacity(
+            color: const Color(0xFF1F232A).withOpacity(
               0.7,
             ),
             decoration: TextDecoration.underline,
             height: 1.6,
             fontSize: 12),
         headline6: TextStyle(
-            color: Color(0xFF1F232A).withOpacity(
+            color: const Color(0xFF1F232A).withOpacity(
               0.7,
             ),
             height: 1.6,
             fontSize: 12),
-        headline5: TextStyle(
+        headline5: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w400,
             decoration: TextDecoration.underline,
             color: MyColors.black),
-        bodyText1: TextStyle(
+        bodyText1: const TextStyle(
             fontSize: 16,
             height: 1.5,
             fontWeight: FontWeight.w600,
             color: MyColors.black),
-        headline2: TextStyle(
+        headline2: const TextStyle(
             fontSize: 32,
             height: 1.25,
             fontWeight: FontWeight.w700,
