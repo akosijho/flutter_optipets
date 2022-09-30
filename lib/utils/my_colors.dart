@@ -18,6 +18,7 @@ class MyColors {
   static const Color textFieldBorder = Color(0xFFE8E9E9);
 
   static const Color blue1 = Color(0xff10375C);
+  static const Color topAppBarBackgroundColor = Color(0xff005792);
   static const Color blueButtonColor = Color(0xff00BBF0);
   static const Color yellow = Color(0xffFDDB3A);
   static const Color black = Color(0xFF1C2026);
