@@ -13,6 +13,7 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<LoginViewModel>.reactive(
         viewModelBuilder: () => LoginViewModel(),
+        disposeViewModel: false,
         builder: (context, viewModel, child) {
           return Scaffold(
             extendBodyBehindAppBar: true,
