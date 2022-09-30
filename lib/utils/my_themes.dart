@@ -62,9 +62,13 @@ class MyThemes {
   static ThemeData light = ThemeData(
     fontFamily: "SF-Pro",
     scaffoldBackgroundColor: Colors.white,
+    disabledColor: MyColors.myGray,
     brightness: Brightness.light,
     primaryColor: MyColors.blue1,
     secondaryHeaderColor: const Color(0xFFFFFAF6),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: MyColors.topAppBarBackgroundColor,
+    ),
     bottomAppBarColor: Colors.white,
     toggleableActiveColor: MyColors.blueButtonColor,
     splashColor: MyColors.yellow.withOpacity(0.1),
@@ -103,13 +107,10 @@ class MyThemes {
           fontSize: 16,
           fontWeight: FontWeight.w600,
         ),
-        headline4: TextStyle(
-            color: const Color(0xFF1F232A).withOpacity(
-              0.7,
-            ),
-            decoration: TextDecoration.underline,
-            height: 1.6,
-            fontSize: 12),
+        headline4: const TextStyle(
+            color: MyColors.scaffoldBg,
+            fontSize: 24,
+            fontWeight: FontWeight.bold),
         headline6: TextStyle(
             color: const Color(0xFF1F232A).withOpacity(
               0.7,
@@ -118,18 +119,19 @@ class MyThemes {
             fontSize: 12),
         headline5: const TextStyle(
             fontSize: 16,
-            fontWeight: FontWeight.w400,
-            decoration: TextDecoration.underline,
+            fontWeight: FontWeight.w700,
             color: MyColors.black),
         bodyText1: const TextStyle(
             fontSize: 16,
             height: 1.5,
             fontWeight: FontWeight.w600,
             color: MyColors.black),
+         bodyText2: const TextStyle(
+            fontSize: 12,
+            color: MyColors.myGray),   
         headline2: const TextStyle(
             fontSize: 32,
-            height: 1.25,
             fontWeight: FontWeight.w700,
-            color: MyColors.black)),
+            color: MyColors.scaffoldBg)),
   );
 }

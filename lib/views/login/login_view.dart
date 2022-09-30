@@ -11,13 +11,9 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController usernameFieldController =
-        TextEditingController();
-    final TextEditingController passwordFieldController =
-        TextEditingController();
     return ViewModelBuilder<LoginViewModel>.reactive(
         viewModelBuilder: () => LoginViewModel(),
-        builder: (context, child, viewModel) {
+        builder: (context, viewModel, child) {
           return Scaffold(
             extendBodyBehindAppBar: true,
             backgroundColor: MyColors.blue1,
@@ -53,7 +49,7 @@ class LoginView extends StatelessWidget {
                       child: Column(
                         children: [
                           TextFormField(
-                            controller: usernameFieldController,
+                            controller: viewModel.usernameFieldController,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
@@ -66,7 +62,8 @@ class LoginView extends StatelessWidget {
                                   .inputDecorationTheme
                                   .fillColor,
                               filled: true,
-                              floatingLabelBehavior: FloatingLabelBehavior.never,
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.never,
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                                 borderSide: const BorderSide(
@@ -83,7 +80,7 @@ class LoginView extends StatelessWidget {
                             height: 16,
                           ),
                           TextFormField(
-                            controller: passwordFieldController,
+                            controller: viewModel.passwordFieldController,
                             obscureText: true,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
@@ -97,7 +94,8 @@ class LoginView extends StatelessWidget {
                                   .inputDecorationTheme
                                   .fillColor,
                               filled: true,
-                              floatingLabelBehavior: FloatingLabelBehavior.never,
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.never,
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                                 borderSide: const BorderSide(
@@ -122,11 +120,15 @@ class LoginView extends StatelessWidget {
                                   const Color(0xff00BBF0),
                                 ),
                               ),
-                              onPressed: () {},
-                              child: const Text("Login",
-                              style: TextStyle(
-                                fontSize: 32,
-                              ),),
+                              onPressed: () {
+                                viewModel.login();
+                              },
+                              child: const Text(
+                                "Login",
+                                style: TextStyle(
+                                  fontSize: 32,
+                                ),
+                              ),
                             ),
                           ),
                         ],
