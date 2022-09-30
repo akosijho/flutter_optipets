@@ -13,7 +13,7 @@ class MyColors {
 
   static const Color lightGrey = Color(0xFFE8E9E9);
   static const Color primary = Color(0xFFFFC491);
-  static const Color gray3 = Color(0xFF828282);
+  static const Color myGray = Color(0xFF545454);
   static const Color red = Color(0xFFFF594F);
   static const Color textFieldBorder = Color(0xFFE8E9E9);
 
