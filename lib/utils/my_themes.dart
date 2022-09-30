@@ -119,14 +119,16 @@ class MyThemes {
             fontSize: 12),
         headline5: const TextStyle(
             fontSize: 16,
-            fontWeight: FontWeight.w400,
-            decoration: TextDecoration.underline,
+            fontWeight: FontWeight.w700,
             color: MyColors.black),
         bodyText1: const TextStyle(
             fontSize: 16,
             height: 1.5,
             fontWeight: FontWeight.w600,
             color: MyColors.black),
+         bodyText2: const TextStyle(
+            fontSize: 12,
+            color: MyColors.myGray),   
         headline2: const TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.w700,

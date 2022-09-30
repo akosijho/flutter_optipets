@@ -7,4 +7,5 @@ class SvgIcons {
   static const String pawIcon = "${_rootPath}paw.svg";
   static const String appointmentIcon = "${_rootPath}appointment.svg";
   static const String profileIcon = "${_rootPath}profile.svg";
+  static const String infoIcon = "${_rootPath}info.svg";
 }
