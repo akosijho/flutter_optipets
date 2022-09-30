@@ -43,7 +43,7 @@ class MyBottomAppBar extends StatelessWidget {
                   iconButton("Pets", SvgIcons.pawIcon, isPets ?? false, Routes.petScreen, viewModel),
                   iconButton("Appointment", SvgIcons.appointmentIcon,
                       isAppointment ?? false, Routes.appointment, viewModel),
-                  iconButton("Me", SvgIcons.profileIcon, isProfile ?? false, Routes.petScreen, viewModel),
+                  iconButton("Me", SvgIcons.profileIcon, isProfile ?? false, Routes.customerProfile, viewModel),
                 ],
               ),
             ),
