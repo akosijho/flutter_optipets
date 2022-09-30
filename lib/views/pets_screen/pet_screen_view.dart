@@ -7,16 +7,12 @@ class PetScreenView extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: myAppBar("Pets"),
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Container(
         width: MediaQuery.of(context).size.width,
-        // height: MediaQuery.of(context).size.height,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const TopAppBar(label: 'Pets'),
-          ],
-        )),
+        height: MediaQuery.of(context).size.height,
+        ),
     );
   }
 
