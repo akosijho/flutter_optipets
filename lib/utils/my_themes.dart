@@ -72,7 +72,7 @@ class MyThemes {
     bottomAppBarColor: Colors.white,
     toggleableActiveColor: MyColors.blueButtonColor,
     splashColor: MyColors.yellow.withOpacity(0.1),
-    highlightColor: MyColors.yellow.withOpacity(0.1),
+    highlightColor: MyColors.yellow,
     hoverColor: MyColors.yellow.withOpacity(0.1),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
