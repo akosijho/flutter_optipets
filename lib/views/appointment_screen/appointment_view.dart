@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_optipets/views/appointment_screen/appoinment_list.dart';
 import 'package:flutter_optipets/views/appointment_screen/appointments_screen_view_model.dart';
 import 'package:flutter_optipets/views/widgets/bottom_appbar.dart';
 import 'package:flutter_optipets/views/widgets/top_appbar.dart';
@@ -16,7 +17,11 @@ class AppointmentView extends StatelessWidget {
           length: viewModel.tabs.length,
           child: Scaffold(
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            appBar: myAppBar("Appointments", tabs: viewModel.tabs),
+            appBar: myAppBar("Appointments", tabs: viewModel.tabs, isAppointment: true),
+            body:  const TabBarView(children: [
+              AppointmentList(),
+              AppointmentList(),
+            ],),
             bottomNavigationBar: const MyBottomAppBar(
               isAppointment: true,
             ),

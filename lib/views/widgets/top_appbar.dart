@@ -6,9 +6,10 @@ import 'package:get/get.dart';
 AppBar myAppBar(
   String title, {
   List<Widget>? tabs,
+  bool? isAppointment
 }) {
   return AppBar(
-      toolbarHeight: title == "Appointments" ? 68 : 60,
+      toolbarHeight: 60,
       title: Text(
         title,
         style: Theme.of(Get.context!).textTheme.headline2,
@@ -31,7 +32,7 @@ AppBar myAppBar(
           ),
         ),
       ],
-      bottom: title != "Appointments" ? null : myTabBar(tabs));
+      bottom: isAppointment != null ? myTabBar(tabs) : null);
 }
 
 TabBar myTabBar(
