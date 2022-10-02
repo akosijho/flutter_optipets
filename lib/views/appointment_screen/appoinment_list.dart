@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_optipets/views/application/application_view_model.dart';
 import 'package:flutter_optipets/views/appointment_screen/appointment_item.dart';
 import 'package:flutter_optipets/views/appointment_screen/appointments_screen_view_model.dart';
 import 'package:stacked/stacked.dart';

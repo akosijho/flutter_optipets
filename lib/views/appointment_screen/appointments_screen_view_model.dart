@@ -32,6 +32,12 @@ class AppointmentViewModel extends ChangeNotifier {
     const Color(0xff21ABA5).withOpacity(0.4),
     const Color(0xffFDDB3A).withOpacity(0.4),
     const Color(0xff29DE92).withOpacity(0.4),
+    const Color(0xfff1b2dc),
+    const Color(0xff9a93bc),
+    const Color(0xfffec3b4),
+    const Color(0xfffec2b4),
+    const Color(0xfff4f7ff),
+    const Color(0xfffff3f0),
   ];
 
   int selectRandomColor() {

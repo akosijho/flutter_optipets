@@ -127,8 +127,9 @@ class MyThemes {
             fontWeight: FontWeight.w600,
             color: MyColors.black),
          bodyText2: const TextStyle(
-            fontSize: 12,
-            color: MyColors.myGray),   
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
+            color: MyColors.scaffoldBg),   
         headline2: const TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.w700,
