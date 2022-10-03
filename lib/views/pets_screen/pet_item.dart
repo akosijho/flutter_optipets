@@ -45,7 +45,7 @@ class PetItem extends StatelessWidget {
                     ),
                     Text(
                       "Poodle",
-                      style: Theme.of(context).textTheme.bodyText2,
+                      style: Theme.of(context).textTheme.bodyText1,
                       textAlign: TextAlign.left,
                     ),
                   ],
