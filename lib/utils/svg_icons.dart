@@ -8,4 +8,6 @@ class SvgIcons {
   static const String appointmentIcon = "${_rootPath}appointment.svg";
   static const String profileIcon = "${_rootPath}profile.svg";
   static const String infoIcon = "${_rootPath}info.svg";
+  static const String pencilIcon = "${_rootPath}pencil.svg";
+  static const String pencilRound = "${_rootPath}pencil_round.svg";
 }

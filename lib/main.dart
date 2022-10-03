@@ -6,6 +6,7 @@ import 'package:flutter_optipets/core/services/navigation/navigation_sevice.dart
 import 'package:flutter_optipets/utils/my_themes.dart';
 import 'package:flutter_optipets/views/splash_screen/splash_screen_view.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:flutter_optipets/views/customer_profile/customer_profile_view.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,6 +19,7 @@ void main() {
       navigatorKey: locator<NavigationService>().navigatorKey,
       debugShowCheckedModeBanner: false,
       title: "Optipets",
+      home: CustomerProfileView(),
     ));
   });
   //runApp(const MyApp());
