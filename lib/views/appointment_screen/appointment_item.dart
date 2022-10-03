@@ -18,6 +18,7 @@ class AppointmentItem extends ViewModelWidget<AppointmentViewModel> {
       child: Stack(
         children: [
           dateContainer(),
+          textChildren()
         ],
       ),
     );
@@ -32,11 +33,53 @@ class AppointmentItem extends ViewModelWidget<AppointmentViewModel> {
         height: 44,
         decoration: BoxDecoration(
           color: const Color(0xff21ABA5).withOpacity(0.6),
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(8),
+            bottomLeft: Radius.circular(8),
+          ),
         ),
         child: Center(
           child:
               Text('OCT 10', style: Theme.of(Get.context!).textTheme.bodyText2),
         ),
+      ),
+    );
+  }
+
+  Widget textChildren(){
+    return Positioned(
+      top: 24,
+      left: 16,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text("Visit Status",
+                style: Theme.of(Get.context!).textTheme.caption,
+              ),
+              Text("Vaccination",
+                style: Theme.of(Get.context!).textTheme.headline6,
+              ),
+            ],
+          ),
+          const SizedBox(height: 24,),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text("Attending Personnel",
+                style: Theme.of(Get.context!).textTheme.caption,
+              ),
+              Text("John Doe",
+                style: Theme.of(Get.context!).textTheme.headline6,
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
