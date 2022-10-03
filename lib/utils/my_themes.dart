@@ -72,7 +72,7 @@ class MyThemes {
     bottomAppBarColor: Colors.white,
     toggleableActiveColor: MyColors.blueButtonColor,
     splashColor: MyColors.yellow.withOpacity(0.1),
-    highlightColor: MyColors.yellow.withOpacity(0.1),
+    highlightColor: MyColors.yellow,
     hoverColor: MyColors.yellow.withOpacity(0.1),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
@@ -89,49 +89,52 @@ class MyThemes {
         height: 10),
     visualDensity: VisualDensity.adaptivePlatformDensity,
     textTheme: TextTheme(
-        
-        headline1: const TextStyle(
-            fontSize: 50,
-            height: 1.2,
-            fontWeight: FontWeight.w700,
-            color: MyColors.black),
-        headline3: const TextStyle(
-          fontSize: 48,
+      headline1: const TextStyle(
+          fontSize: 50,
+          height: 1.2,
           fontWeight: FontWeight.w700,
+          color: MyColors.black),
+      headline3: const TextStyle(
+        fontSize: 48,
+        fontWeight: FontWeight.w700,
+        color: MyColors.scaffoldBg,
+      ),
+      button: TextStyle(
+        color: const Color(0xFF1F232A).withOpacity(
+          0.8,
+        ),
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+      ),
+      headline4: const TextStyle(
           color: MyColors.scaffoldBg,
-        ),
-        button: TextStyle(
-          color: const Color(0xFF1F232A).withOpacity(
-            0.8,
-          ),
+          fontSize: 24,
+          fontWeight: FontWeight.bold),
+      headline6: const TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w700,
+        color: MyColors.blue2,
+      ),
+      headline5: const TextStyle(
+          fontSize: 16, fontWeight: FontWeight.w700, color: MyColors.black),
+      bodyText1: const TextStyle(
           fontSize: 16,
+          height: 1.5,
           fontWeight: FontWeight.w600,
-        ),
-        headline4: const TextStyle(
-            color: MyColors.scaffoldBg,
-            fontSize: 24,
-            fontWeight: FontWeight.bold),
-        headline6: TextStyle(
-            color: const Color(0xFF1F232A).withOpacity(
-              0.7,
-            ),
-            height: 1.6,
-            fontSize: 12),
-        headline5: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w700,
-            color: MyColors.black),
-        bodyText1: const TextStyle(
-            fontSize: 16,
-            height: 1.5,
-            fontWeight: FontWeight.w600,
-            color: MyColors.black),
-         bodyText2: const TextStyle(
-            fontSize: 12,
-            color: MyColors.myGray),   
-        headline2: const TextStyle(
-            fontSize: 32,
-            fontWeight: FontWeight.w700,
-            color: MyColors.scaffoldBg)),
+          color: MyColors.black),
+      bodyText2: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w700,
+          color: MyColors.scaffoldBg),
+      headline2: const TextStyle(
+          fontSize: 32,
+          fontWeight: FontWeight.w700,
+          color: MyColors.scaffoldBg),
+      caption: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w700,
+        color: MyColors.blue2.withOpacity(0.6),
+      ),
+    ),
   );
 }

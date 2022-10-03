@@ -11,9 +11,7 @@ class CustomerProfileView extends StatelessWidget{
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: myAppBar("Me"),
-      body: Center(
-        child: myCircularProgress(),
-      ),
+      body: myCircularProgress(),
       bottomNavigationBar: const MyBottomAppBar(
         isProfile: true,
       ),
