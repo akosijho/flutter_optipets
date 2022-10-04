@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_optipets/app/app.router.dart';
 import 'package:flutter_optipets/utils/svg_icons.dart';
 import 'package:flutter_optipets/utils/svg_images.dart';
+import 'package:flutter_optipets/views/pets_screen/pet_screen_view_model.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:stacked/stacked.dart';
 
-class PetItem extends StatelessWidget {
+class PetItem extends ViewModelWidget<PetScreenVieModel> {
   const PetItem({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, PetScreenVieModel viewModel) {
     return InkWell(
-      onTap: () {},
+      onTap: () async {
+        await viewModel.applicationViewModel.navigationService.pushNamed(Routes.petProfile);
+      },
       child: Container(
         height: 64,
         width: double.infinity,

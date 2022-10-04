@@ -61,7 +61,7 @@ class MyThemes {
 
   static ThemeData light = ThemeData(
     fontFamily: "SF-Pro",
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: Colors.white,    
     disabledColor: MyColors.myGray,
     brightness: Brightness.light,
     primaryColor: MyColors.blue1,
