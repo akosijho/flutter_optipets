@@ -19,7 +19,6 @@ void main() {
       navigatorKey: locator<NavigationService>().navigatorKey,
       debugShowCheckedModeBanner: false,
       title: "Optipets",
-      home: AppointmentView()
     ));
   });
   //runApp(const MyApp());
