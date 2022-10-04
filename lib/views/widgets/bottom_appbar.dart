@@ -23,7 +23,7 @@ class MyBottomAppBar extends StatelessWidget {
         builder: (context, viewModel, child) {
           return Container(
             width: MediaQuery.of(context).size.width,
-            height: 88,
+            height: 72,
             decoration: BoxDecoration(
               color: Theme.of(context).bottomAppBarColor,
               shape: BoxShape.rectangle,
@@ -36,7 +36,7 @@ class MyBottomAppBar extends StatelessWidget {
               ),
             ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -63,12 +63,13 @@ class MyBottomAppBar extends StatelessWidget {
             icon: SvgPicture.asset(icon,
                 color: isSelected
                     ? Theme.of(Get.context!).toggleableActiveColor
-                    : Theme.of(Get.context!).disabledColor)),
+                    : Theme.of(Get.context!).disabledColor,
+                    width: 48,),),
         Expanded(
           child: Text(
             label,
             style: TextStyle(
-              fontSize: 16,
+              fontSize: 12,
               fontWeight: FontWeight.w700,
               color: isSelected
                   ? Theme.of(Get.context!).toggleableActiveColor
