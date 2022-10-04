@@ -79,9 +79,8 @@ class MyThemes {
       filled: true,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: const BorderSide(),
       ),
-      contentPadding: const EdgeInsets.only(top: 8, left: 8),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       fillColor: MyColors.scaffoldBg,
     ),
     buttonTheme: const ButtonThemeData(
