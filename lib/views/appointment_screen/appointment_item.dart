@@ -9,7 +9,7 @@ class AppointmentItem extends ViewModelWidget<AppointmentViewModel> {
   @override
   Widget build(BuildContext context, AppointmentViewModel viewModel) {
     return Container(
-      height: 150,
+      height: 120,
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
         color: viewModel.cardColors[viewModel.selectRandomColor()],
@@ -48,7 +48,7 @@ class AppointmentItem extends ViewModelWidget<AppointmentViewModel> {
 
   Widget textChildren(){
     return Positioned(
-      top: 24,
+      top: 16,
       left: 16,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

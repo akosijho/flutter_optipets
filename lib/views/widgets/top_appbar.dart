@@ -39,13 +39,17 @@ AppBar myAppBar(
       bottom: isAppointment != null ? myTabBar(tabs) : null);
 }
 
-TabBar myTabBar(
+PreferredSize myTabBar(
   List<Widget>? tabs,
 ) {
-  return TabBar(
-    padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-    indicator: myTabIndicator(),
-    tabs: tabs!,
+  return PreferredSize(
+    preferredSize: Size(MediaQuery.of(Get.context!).size.width, 34),
+    child: TabBar(
+      padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+      indicator: myTabIndicator(),
+      indicatorSize: TabBarIndicatorSize.tab,
+      tabs: tabs!,
+    ),
   );
 }
 

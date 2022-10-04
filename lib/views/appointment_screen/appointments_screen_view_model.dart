@@ -4,24 +4,24 @@ import 'package:flutter/material.dart';
 
 class AppointmentViewModel extends ChangeNotifier {
   final List<Widget> tabs = [
-    const Padding(
-      padding: EdgeInsets.all(8.0),
+     const SizedBox(
+      height: 24,
       child: Center(
-          child: Text(
+          child:  Text(
         'UPCOMING',
-        style: TextStyle(
-          fontSize: 16,
+        style:  TextStyle(
+          fontSize: 12,
           fontWeight: FontWeight.w700,
         ),
       )),
     ),
-    const Padding(
-      padding: EdgeInsets.all(8.0),
+    const SizedBox(
+      height: 24,
       child: Center(
-          child: Text(
+          child:  Text(
         'PREVIOUS',
-        style: TextStyle(
-          fontSize: 16,
+        style:  TextStyle(
+          fontSize: 12,
           fontWeight: FontWeight.w700,
         ),
       )),

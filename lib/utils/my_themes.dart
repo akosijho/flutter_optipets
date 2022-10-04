@@ -111,7 +111,7 @@ class MyThemes {
           fontSize: 24,
           fontWeight: FontWeight.bold),
       headline6: const TextStyle(
-        fontSize: 20,
+        fontSize: 16,
         fontWeight: FontWeight.w700,
         color: MyColors.blue2,
       ),
@@ -131,7 +131,7 @@ class MyThemes {
           fontWeight: FontWeight.w700,
           color: MyColors.scaffoldBg),
       caption: TextStyle(
-        fontSize: 16,
+        fontSize: 12,
         fontWeight: FontWeight.w700,
         color: MyColors.blue2.withOpacity(0.6),
       ),
