@@ -4,6 +4,7 @@ import 'package:flutter_optipets/app/app.locator.dart';
 import 'package:flutter_optipets/app/app.router.dart';
 import 'package:flutter_optipets/core/services/navigation/navigation_sevice.dart';
 import 'package:flutter_optipets/utils/my_themes.dart';
+import 'package:flutter_optipets/views/pet_profile/pet_profile_view.dart';
 import 'package:flutter_optipets/views/splash_screen/splash_screen_view.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
@@ -18,6 +19,7 @@ void main() {
       navigatorKey: locator<NavigationService>().navigatorKey,
       debugShowCheckedModeBanner: false,
       title: "Optipets",
+      home: PetProfileView()
     ));
   });
   //runApp(const MyApp());
