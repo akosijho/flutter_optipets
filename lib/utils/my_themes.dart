@@ -66,6 +66,7 @@ class MyThemes {
     brightness: Brightness.light,
     primaryColor: MyColors.blue1,
     secondaryHeaderColor: const Color(0xFFFFFAF6),
+    dividerColor: MyColors.black,
     appBarTheme: const AppBarTheme(
       backgroundColor: MyColors.topAppBarBackgroundColor,
     ),
@@ -73,7 +74,7 @@ class MyThemes {
     toggleableActiveColor: MyColors.blueButtonColor,
     splashColor: MyColors.yellow.withOpacity(0.1),
     highlightColor: MyColors.yellow,
-    hoverColor: MyColors.yellow.withOpacity(0.1),
+    hoverColor: MyColors.myGray.withOpacity(0.1),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       border: OutlineInputBorder(
@@ -89,9 +90,9 @@ class MyThemes {
         height: 10),
     visualDensity: VisualDensity.adaptivePlatformDensity,
     textTheme: TextTheme(
+      // profile page
       headline1: const TextStyle(
-          fontSize: 50,
-          height: 1.2,
+          fontSize: 16,
           fontWeight: FontWeight.w700,
           color: MyColors.black),
       headline3: const TextStyle(
@@ -117,11 +118,11 @@ class MyThemes {
       ),
       headline5: const TextStyle(
           fontSize: 16, fontWeight: FontWeight.w700, color: MyColors.black),
+      //pet_item list
       bodyText1: const TextStyle(
-          fontSize: 16,
-          height: 1.5,
-          fontWeight: FontWeight.w600,
-          color: MyColors.black),
+          fontSize: 12,
+          color: MyColors.myGray),
+      //appointment_list
       bodyText2: const TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w700,
