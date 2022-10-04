@@ -9,7 +9,7 @@ AppBar myAppBar(
   bool? isAppointment
 }) {
   return AppBar(
-      toolbarHeight: 60,
+      toolbarHeight: 48,
       title: Text(
         title,
         style: Theme.of(Get.context!).textTheme.headline2,
@@ -22,11 +22,15 @@ AppBar myAppBar(
             children: [
               IconButton(
                   onPressed: () {},
-                  icon: SvgPicture.asset(SvgIcons.searchIcon)),
+                  icon: SvgPicture.asset(SvgIcons.searchIcon,
+                  width: 24,
+                  height: 24,)),
               IconButton(
                   onPressed: () {},
                   icon: SvgPicture.asset(
                     SvgIcons.chatIcon,
+                  width: 24,
+                  height: 24,
                   )),
             ],
           ),
