@@ -9,10 +9,10 @@ class ProfileImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 344,
+      height: 284,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        color: Theme.of(context).toggleableActiveColor,
+        color: Theme.of(context).toggleableActiveColor.withOpacity(0.4),
         borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(48),
           bottomRight: Radius.circular(48),
@@ -22,7 +22,7 @@ class ProfileImage extends StatelessWidget {
         padding: const EdgeInsets.only(top: 40),
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Stack(
                 children: [
@@ -49,7 +49,20 @@ class ProfileImage extends StatelessWidget {
                         icon: SvgPicture.asset(SvgIcons.pencilRound),
                       )),
                 ],
-              )
+              ),
+              const SizedBox(height: 8,),
+              Text("Profile Name",
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w700,
+                color: Theme.of(context).textTheme.headline6!.color,
+              )),
+              Text("@profilecontact",
+              style: TextStyle(
+                fontSize: 10,
+                fontWeight: FontWeight.w700,
+                color: Theme.of(context).textTheme.headline6!.color!.withOpacity(0.7),
+              )),
             ],
           ),
         ),
