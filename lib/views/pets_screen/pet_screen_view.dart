@@ -11,28 +11,31 @@ class PetScreenView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<PetScreenVieModel>.reactive(
-      viewModelBuilder: () => PetScreenVieModel(),
-      disposeViewModel: false,
-      builder: (context, viewModel, child) {
-        return Scaffold(
-          appBar: myAppBar("Pets"),
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          body: SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: ListView.separated(
-              padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-              physics: const BouncingScrollPhysics(),
-                itemBuilder: (context, index) => const PetItem(),
-                separatorBuilder: (context, _) => const SizedBox(height: 2),
-                itemCount: 20),
-          ),
-          bottomNavigationBar: const MyBottomAppBar(
-            isPets: true,
-          ),
-        );
-      }
-    );
+        viewModelBuilder: () => PetScreenVieModel(),
+        disposeViewModel: false,
+        builder: (context, viewModel, child) {
+          return Scaffold(
+            appBar: myAppBar("Pets"),
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            body: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: ListView.separated(
+                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  physics: const BouncingScrollPhysics(),
+                  itemBuilder: (context, index) => PetItem(
+                        isInSearchPage: false,
+                        name: "Pet Name",
+                        breed: "Poodle",
+                      ),
+                  separatorBuilder: (context, _) => const SizedBox(height: 2),
+                  itemCount: 20),
+            ),
+            bottomNavigationBar: const MyBottomAppBar(
+              isPets: true,
+            ),
+          );
+        });
   }
 }

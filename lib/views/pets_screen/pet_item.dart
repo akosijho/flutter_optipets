@@ -1,19 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_optipets/app/app.locator.dart';
 import 'package:flutter_optipets/app/app.router.dart';
 import 'package:flutter_optipets/utils/svg_icons.dart';
 import 'package:flutter_optipets/utils/svg_images.dart';
-import 'package:flutter_optipets/views/pets_screen/pet_screen_view_model.dart';
+import 'package:flutter_optipets/views/application/application_view_model.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:stacked/stacked.dart';
 
-class PetItem extends ViewModelWidget<PetScreenVieModel> {
-  const PetItem({Key? key}) : super(key: key);
+class PetItem extends StatelessWidget {
+  PetItem({
+    Key? key,
+    required this.isInSearchPage,
+    required this.name,
+    required this.breed,
+  }) : super(key: key);
+
+  final String name, breed;
+  final bool isInSearchPage;
+  final ApplicationViewModel applicationViewModel =
+      locator<ApplicationViewModel>();
 
   @override
-  Widget build(BuildContext context, PetScreenVieModel viewModel) {
+  Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
-        await viewModel.applicationViewModel.navigationService.pushNamed(Routes.petProfile);
+        await applicationViewModel.navigationService
+            .pushNamed(Routes.petProfile);
       },
       child: Container(
         height: 64,
@@ -41,7 +52,7 @@ class PetItem extends ViewModelWidget<PetScreenVieModel> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Pet Name",
+                      name,
                       style: Theme.of(context).textTheme.headline5,
                       textAlign: TextAlign.left,
                     ),
@@ -49,7 +60,7 @@ class PetItem extends ViewModelWidget<PetScreenVieModel> {
                       height: 4,
                     ),
                     Text(
-                      "Poodle",
+                      breed,
                       style: Theme.of(context).textTheme.bodyText1,
                       textAlign: TextAlign.left,
                     ),
@@ -57,13 +68,13 @@ class PetItem extends ViewModelWidget<PetScreenVieModel> {
                 ),
               ],
             ),
-            IconButton(
+            !isInSearchPage ? IconButton(
               icon: SvgPicture.asset(
                 SvgIcons.infoIcon,
                 width: 24,
               ),
               onPressed: () {},
-            ),
+            ) : Container(),
           ],
         ),
       ),
