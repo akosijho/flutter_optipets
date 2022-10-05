@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_optipets/utils/svg_images.dart';
 import 'package:flutter_optipets/views/pets_screen/pet_item.dart';
 import 'package:flutter_optipets/views/pets_screen/pet_screen_view_model.dart';
 import 'package:flutter_optipets/views/widgets/bottom_appbar.dart';
@@ -25,9 +26,10 @@ class PetScreenView extends StatelessWidget {
                   scrollDirection: Axis.vertical,
                   physics: const BouncingScrollPhysics(),
                   itemBuilder: (context, index) => PetItem(
-                        isInSearchPage: false,
+                        showActions: true,
+                        isInChatPage: false,
                         name: "Pet Name",
-                        breed: "Poodle",
+                        breed: "Poodle", image: SvgImages.temp,
                       ),
                   separatorBuilder: (context, _) => const SizedBox(height: 2),
                   itemCount: 20),

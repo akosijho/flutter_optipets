@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_optipets/app/app.locator.dart';
 import 'package:flutter_optipets/app/app.router.dart';
 import 'package:flutter_optipets/utils/svg_icons.dart';
-import 'package:flutter_optipets/utils/svg_images.dart';
 import 'package:flutter_optipets/views/application/application_view_model.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class PetItem extends StatelessWidget {
   PetItem({
     Key? key,
-    required this.isInSearchPage,
+    required this.showActions,
     required this.name,
     required this.breed,
+    required this.image,
+    required this.isInChatPage,
   }) : super(key: key);
 
-  final String name, breed;
-  final bool isInSearchPage;
+  final String name, breed, image;
+  final bool showActions, isInChatPage;
   final ApplicationViewModel applicationViewModel =
       locator<ApplicationViewModel>();
 
@@ -23,8 +24,11 @@ class PetItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
-        await applicationViewModel.navigationService
-            .pushNamed(Routes.petProfile);
+        isInChatPage
+            ? await applicationViewModel.navigationService
+                .pushNamed(Routes.conversationView)
+            : await applicationViewModel.navigationService
+                .pushNamed(Routes.petProfile);
       },
       child: Container(
         height: 64,
@@ -43,7 +47,7 @@ class PetItem extends StatelessWidget {
                     width: 56,
                     height: 56,
                     decoration: const BoxDecoration(shape: BoxShape.circle),
-                    child: Image.asset(SvgImages.temp)),
+                    child: Image.asset(image)),
                 const SizedBox(
                   width: 8,
                 ),
@@ -68,13 +72,15 @@ class PetItem extends StatelessWidget {
                 ),
               ],
             ),
-            !isInSearchPage ? IconButton(
-              icon: SvgPicture.asset(
-                SvgIcons.infoIcon,
-                width: 24,
-              ),
-              onPressed: () {},
-            ) : Container(),
+            showActions
+                ? IconButton(
+                    icon: SvgPicture.asset(
+                      SvgIcons.infoIcon,
+                      width: 24,
+                    ),
+                    onPressed: () {},
+                  )
+                : Container(),
           ],
         ),
       ),
