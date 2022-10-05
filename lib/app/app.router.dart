@@ -11,6 +11,7 @@ import 'package:stacked/stacked_annotations.dart';
 
 import '../views/appointment_screen/appointment_view.dart';
 import '../views/chat_screen/chats_view.dart';
+import '../views/chat_screen/conversation_view/conversation_view.dart';
 import '../views/customer_profile/customer_profile_view.dart';
 import '../views/login/login_view.dart';
 import '../views/pet_profile/pet_profile_view.dart';
@@ -25,6 +26,7 @@ class Routes {
   static const String customerProfile = '/customer-profile-view';
   static const String petProfile = '/pet-profile-view';
   static const String chatsView = '/chats-view';
+  static const String conversationView = '/conversation-view';
   static const all = <String>{
     splash,
     login,
@@ -33,6 +35,7 @@ class Routes {
     customerProfile,
     petProfile,
     chatsView,
+    conversationView,
   };
 }
 
@@ -47,6 +50,7 @@ class StackedRouter extends RouterBase {
     RouteDef(Routes.customerProfile, page: CustomerProfileView),
     RouteDef(Routes.petProfile, page: PetProfileView),
     RouteDef(Routes.chatsView, page: ChatsView),
+    RouteDef(Routes.conversationView, page: ConversationView),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
@@ -90,6 +94,12 @@ class StackedRouter extends RouterBase {
     ChatsView: (data) {
       return buildAdaptivePageRoute<dynamic>(
         builder: (context) => const ChatsView(),
+        settings: data,
+      );
+    },
+    ConversationView: (data) {
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => const ConversationView(),
         settings: data,
       );
     },

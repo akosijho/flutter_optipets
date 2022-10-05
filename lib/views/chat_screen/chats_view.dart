@@ -20,6 +20,7 @@ class ChatsView extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) => PetItem(
                   showActions: false,
+                  isInChatPage: true,
                   name: "Pet Name",
                   breed: "Owned by Owner Name",
                   image: SvgImages.tempProfile,

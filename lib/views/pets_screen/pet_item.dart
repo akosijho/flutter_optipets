@@ -12,10 +12,11 @@ class PetItem extends StatelessWidget {
     required this.name,
     required this.breed,
     required this.image,
+    required this.isInChatPage,
   }) : super(key: key);
 
   final String name, breed, image;
-  final bool showActions;
+  final bool showActions, isInChatPage;
   final ApplicationViewModel applicationViewModel =
       locator<ApplicationViewModel>();
 
@@ -23,8 +24,11 @@ class PetItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
-        await applicationViewModel.navigationService
-            .pushNamed(Routes.petProfile);
+        isInChatPage
+            ? await applicationViewModel.navigationService
+                .pushNamed(Routes.conversationView)
+            : await applicationViewModel.navigationService
+                .pushNamed(Routes.petProfile);
       },
       child: Container(
         height: 64,

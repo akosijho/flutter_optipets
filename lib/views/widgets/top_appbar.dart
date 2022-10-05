@@ -9,45 +9,65 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 AppBar myAppBar(
-  String title, {
+  dynamic title, {
   List<Widget>? tabs,
   bool? isAppointment,
-  bool? isChats
+  bool? isChats,
+  bool? isInConversationView,
 }) {
-  final ApplicationViewModel applicationViewModel = locator<ApplicationViewModel>();
+  final ApplicationViewModel applicationViewModel =
+      locator<ApplicationViewModel>();
   return AppBar(
       toolbarHeight: 48,
-      title: Text(
+      title: isInConversationView == true ? title : Text(
         title,
         style: Theme.of(Get.context!).textTheme.headline2,
       ),
       automaticallyImplyLeading: isChats != null ? true : false,
-      actions: isChats == null ?  [
-        Padding(
-          padding: const EdgeInsets.only(right: 8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              IconButton(
-                  onPressed: () {
-                    showSearch(context: getContext, delegate: SearchViewDelegate(), useRootNavigator: true);
-                  },
-                  icon: SvgPicture.asset(SvgIcons.searchIcon,
-                  width: 24,
-                  height: 24,)),
-              IconButton(
-                  onPressed: () {
-                    applicationViewModel.navigationService.pushNamed(Routes.chatsView);
-                  },
-                  icon: SvgPicture.asset(
-                    SvgIcons.chatIcon,
-                  width: 24,
-                  height: 24,
-                  )),
-            ],
-          ),
-        ),
-      ] : null,
+      actions: isChats == null || isChats == false
+          ? [
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                        onPressed: () {
+                          showSearch(
+                              context: getContext,
+                              delegate: SearchViewDelegate(),
+                              useRootNavigator: true);
+                        },
+                        icon: SvgPicture.asset(
+                          SvgIcons.searchIcon,
+                          width: 24,
+                          height: 24,
+                        )),
+                    IconButton(
+                        onPressed: () {
+                          applicationViewModel.navigationService
+                              .pushNamed(Routes.chatsView);
+                        },
+                        icon: SvgPicture.asset(
+                          SvgIcons.chatIcon,
+                          width: 24,
+                          height: 24,
+                        )),
+                  ],
+                ),
+              ),
+            ]
+          : isInConversationView != null
+              ? [
+                  IconButton(
+                      onPressed: () {},
+                      icon: SvgPicture.asset(
+                        SvgIcons.trash,
+                        width: 24,
+                        height: 24,
+                      )),
+                ]
+              : null,
       bottom: isAppointment != null ? myTabBar(tabs) : null);
 }
 

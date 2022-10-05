@@ -27,6 +27,7 @@ class PetScreenView extends StatelessWidget {
                   physics: const BouncingScrollPhysics(),
                   itemBuilder: (context, index) => PetItem(
                         showActions: true,
+                        isInChatPage: false,
                         name: "Pet Name",
                         breed: "Poodle", image: SvgImages.temp,
                       ),

@@ -18,4 +18,5 @@ class SvgIcons {
   static const String genderOutlined = "${_rootPath}gender.svg";
   static const String pawOutlined = "${_rootPath}paw_outlined.svg";
   static const String weighOutlined = "${_rootPath}weigh.svg";
+  static const String trash = "${_rootPath}trash.svg";
 }
