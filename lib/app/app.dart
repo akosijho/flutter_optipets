@@ -1,6 +1,7 @@
 import 'package:flutter_optipets/core/services/navigation/navigation_service_impl.dart';
 import 'package:flutter_optipets/core/services/navigation/navigation_sevice.dart';
 import 'package:flutter_optipets/views/appointment_screen/appointment_view.dart';
+import 'package:flutter_optipets/views/chat_screen/chats_view.dart';
 import 'package:flutter_optipets/views/customer_profile/customer_profile_view.dart';
 import 'package:flutter_optipets/views/login/login_view.dart';
 import 'package:flutter_optipets/views/pet_profile/pet_profile_view.dart';
@@ -16,6 +17,7 @@ import 'package:flutter_optipets/views/application/application_view_model.dart';
   AdaptiveRoute(page: AppointmentView, name: "appointment"),
   AdaptiveRoute(page: CustomerProfileView, name: "customerProfile"),
   AdaptiveRoute(page: PetProfileView, name: "petProfile"),
+  AdaptiveRoute(page: ChatsView, name: "chatsView"),
 ], dependencies: [
   LazySingleton(classType: ApplicationViewModel, asType: ApplicationViewModel),
   LazySingleton(classType: NavigationServiceImpl, asType: NavigationService),
