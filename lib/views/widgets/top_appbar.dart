@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_optipets/utils/constants.dart';
 import 'package:flutter_optipets/utils/svg_icons.dart';
+import 'package:flutter_optipets/views/search/search_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
@@ -21,7 +23,9 @@ AppBar myAppBar(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showSearch(context: getContext, delegate: SearchViewDelegate(), useRootNavigator: true);
+                  },
                   icon: SvgPicture.asset(SvgIcons.searchIcon,
                   width: 24,
                   height: 24,)),
