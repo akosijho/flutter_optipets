@@ -5,4 +5,6 @@ import 'package:stacked/stacked.dart';
 class PetScreenVieModel extends BaseViewModel{
   final ApplicationViewModel applicationViewModel = locator<ApplicationViewModel>();
 
+  String name = "My name";
+
 }

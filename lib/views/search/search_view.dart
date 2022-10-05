@@ -1,24 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_optipets/app/app.locator.dart';
 import 'package:flutter_optipets/utils/my_colors.dart';
+import 'package:flutter_optipets/views/application/application_view_model.dart';
 import 'package:flutter_optipets/views/search/search_suggestions.dart';
 
 class SearchViewDelegate extends SearchDelegate {
-// Demo list to show querying
-  List<String> searchTerms = [
-    "Apple",
-    "Banana",
-    "Mango",
-    "Pear",
-    "Watermelons",
-    "Blueberries",
-    "Pineapples",
-    "Strawberries",
-    "Grapes",
-    "Raspberry",
-    "Durian",
-    "Dragon Fruit",
-    ""
-  ];
+  final ApplicationViewModel applicationViewModel = locator<ApplicationViewModel>();
 
   // override appbar theme
   @override
@@ -69,21 +56,13 @@ class SearchViewDelegate extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     List<String> matchQuery = [];
-    for (var fruit in searchTerms) {
+    for (var fruit in applicationViewModel.searchTerms) {
       if (fruit.toLowerCase().contains(query.toLowerCase())) {
         matchQuery.add(fruit);
       }
     }
     if (matchQuery.isNotEmpty) {
-      return ListView.builder(
-        itemCount: matchQuery.length,
-        itemBuilder: (context, index) {
-          var result = matchQuery[index];
-          return ListTile(
-            title: Text(result),
-          );
-        },
-      );
+      return SearchSuggestions(query: query, matchQuery: matchQuery);
     } else {
       return const Center(
           child: Text(
@@ -100,7 +79,7 @@ class SearchViewDelegate extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     List<String> matchQuery = [];
-    for (var fruit in searchTerms) {
+    for (var fruit in applicationViewModel.searchTerms) {
       if (fruit.toLowerCase().contains(query.toLowerCase())) {
         matchQuery.add(fruit);
       }
