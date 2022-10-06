@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/utils/svg_images.dart';
+import 'package:flutter_optipets/views/widgets/my_circular_progress.dart';
 import 'package:flutter_optipets/views/widgets/top_appbar.dart';
 
 class ConversationView extends StatelessWidget {
@@ -30,6 +31,7 @@ class ConversationView extends StatelessWidget {
         isInConversationView: true,
         isChats: true,
       ),
+      body: myCircularProgress(),
     );
   }
 }
