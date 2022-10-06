@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 abstract class NavigationService {
   GlobalKey<NavigatorState> get navigatorKey;
 
-  Future<dynamic>? pushNamed(String routeName, {dynamic arguments, Transition transition = Transition.cupertino});
+  Future<dynamic>? pushNamed(String routeName, {dynamic arguments});
 
-  Future<dynamic>? pushReplacementNamed(String routeName, {dynamic arguments, Transition transition = Transition.cupertino});
+  Future<dynamic>? pushReplacementNamed(String routeName, {dynamic arguments});
 
   Future<dynamic>? popAllAndPushNamed(String routeName, {dynamic arguments});
 

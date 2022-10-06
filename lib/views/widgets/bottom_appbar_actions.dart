@@ -7,8 +7,8 @@ class MyBottomAppBarActions extends ChangeNotifier{
 
   final ApplicationViewModel applicationViewModel = locator<ApplicationViewModel>();
   
-  void routeTo(String route) async {
-    await applicationViewModel.navigationService.pushReplacementNamed(route, transition: Transition.noTransition);
+  void routeTo(dynamic route) {
+    Get.off(route, transition: Transition.noTransition);
     notifyListeners();
   }
 }

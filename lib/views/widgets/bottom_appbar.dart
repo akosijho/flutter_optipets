@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/app/app.router.dart';
 import 'package:flutter_optipets/utils/svg_icons.dart';
+import 'package:flutter_optipets/views/appointment_screen/appointment_view.dart';
+import 'package:flutter_optipets/views/customer_profile/customer_profile_view.dart';
+import 'package:flutter_optipets/views/pets_screen/pet_screen_view.dart';
 import 'package:flutter_optipets/views/widgets/bottom_appbar_actions.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -40,10 +43,10 @@ class MyBottomAppBar extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  iconButton("Pets", SvgIcons.pawIcon, isPets ?? false, Routes.petScreen, viewModel),
+                  iconButton("Pets", SvgIcons.pawIcon, isPets ?? false, PetScreenView(), viewModel),
                   iconButton("Appointment", SvgIcons.appointmentIcon,
-                      isAppointment ?? false, Routes.appointment, viewModel),
-                  iconButton("Me", SvgIcons.profileIcon, isProfile ?? false, Routes.customerProfile, viewModel),
+                      isAppointment ?? false, AppointmentView(), viewModel),
+                  iconButton("Me", SvgIcons.profileIcon, isProfile ?? false, CustomerProfileView(), viewModel),
                 ],
               ),
             ),
@@ -51,7 +54,7 @@ class MyBottomAppBar extends StatelessWidget {
         });
   }
 
-  Widget iconButton(String label, String icon, bool isSelected, String route,
+  Widget iconButton(String label, String icon, bool isSelected, dynamic route,
       MyBottomAppBarActions myBottomAppBarActions) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -11,19 +11,13 @@ class NavigationServiceImpl implements NavigationService {
 
   /// Pushes [routeName] onto the navigation stack
   @override
-  Future<dynamic>? pushNamed(String routeName, {dynamic arguments, Transition transition = Transition.cupertino}) {
-    Get.config(
-      defaultTransition: transition,  
-    );
+  Future<dynamic>? pushNamed(String routeName, {dynamic arguments}) {
     return Get.toNamed(routeName, arguments: arguments);
   }
 
   /// Replaces the current route with the [routeName]
   @override
-  Future<dynamic>? pushReplacementNamed(String routeName, {dynamic arguments, Transition transition = Transition.cupertino}) {
-    Get.config(
-      defaultTransition: transition,  
-    );
+  Future<dynamic>? pushReplacementNamed(String routeName, {dynamic arguments}) {
     return Get.offNamed(
       routeName,
       arguments: arguments,
