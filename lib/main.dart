@@ -5,7 +5,7 @@ import 'package:flutter_optipets/app/app.router.dart';
 import 'package:flutter_optipets/core/services/navigation/navigation_sevice.dart';
 import 'package:flutter_optipets/utils/my_themes.dart';
 import 'package:flutter_optipets/views/splash_screen/splash_screen_view.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,6 +18,7 @@ void main() {
       navigatorKey: locator<NavigationService>().navigatorKey,
       debugShowCheckedModeBanner: false,
       title: "Optipets",
+      defaultTransition: Transition.noTransition
     ));
   });
   //runApp(const MyApp());
