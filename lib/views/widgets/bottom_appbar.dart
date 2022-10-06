@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_optipets/app/app.router.dart';
 import 'package:flutter_optipets/utils/svg_icons.dart';
 import 'package:flutter_optipets/views/appointment_screen/appointment_view.dart';
 import 'package:flutter_optipets/views/customer_profile/customer_profile_view.dart';
@@ -43,10 +42,10 @@ class MyBottomAppBar extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  iconButton("Pets", SvgIcons.pawIcon, isPets ?? false, PetScreenView(), viewModel),
+                  iconButton("Pets", SvgIcons.pawIcon, isPets ?? false, const PetScreenView(), viewModel),
                   iconButton("Appointment", SvgIcons.appointmentIcon,
-                      isAppointment ?? false, AppointmentView(), viewModel),
-                  iconButton("Me", SvgIcons.profileIcon, isProfile ?? false, CustomerProfileView(), viewModel),
+                      isAppointment ?? false, const AppointmentView(), viewModel),
+                  iconButton("Me", SvgIcons.profileIcon, isProfile ?? false, const CustomerProfileView(), viewModel),
                 ],
               ),
             ),
