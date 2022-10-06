@@ -18,7 +18,6 @@ void main() {
       navigatorKey: locator<NavigationService>().navigatorKey,
       debugShowCheckedModeBanner: false,
       title: "Optipets",
-      defaultTransition: Transition.noTransition
     ));
   });
   //runApp(const MyApp());
