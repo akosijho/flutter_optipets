@@ -8,6 +8,7 @@ import 'package:flutter_optipets/views/login/login_view.dart';
 import 'package:flutter_optipets/views/pet_profile/pet_profile_view.dart';
 import 'package:flutter_optipets/views/pets_screen/pet_screen_view.dart';
 import 'package:flutter_optipets/views/splash_screen/splash_screen_view.dart';
+import 'package:flutter_optipets/views/splash_screen/splash_screen_view_model.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:flutter_optipets/views/application/application_view_model.dart';
 
@@ -23,5 +24,6 @@ import 'package:flutter_optipets/views/application/application_view_model.dart';
 ], dependencies: [
   LazySingleton(classType: ApplicationViewModel, asType: ApplicationViewModel),
   LazySingleton(classType: NavigationServiceImpl, asType: NavigationService),
+  LazySingleton(classType: SplashScreenViewModel, asType: SplashScreenViewModel),
 ])
 class App {}
