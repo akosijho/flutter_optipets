@@ -5,6 +5,7 @@ import 'package:flutter_optipets/app/app.router.dart';
 import 'package:flutter_optipets/core/services/navigation/navigation_sevice.dart';
 import 'package:flutter_optipets/utils/my_themes.dart';
 import 'package:flutter_optipets/views/splash_screen/splash_screen_view.dart';
+import 'package:flutter_optipets/views/splash_screen/splash_screen_view_model.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -12,12 +13,14 @@ void main() {
   setupLocator();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
+        final SplashScreenViewModel splashScreenViewModel = locator<SplashScreenViewModel>();
     runApp(GetMaterialApp(
       theme: MyThemes.light,
       onGenerateRoute: StackedRouter().onGenerateRoute,
       navigatorKey: locator<NavigationService>().navigatorKey,
       debugShowCheckedModeBanner: false,
       title: "Optipets",
+      onDispose: () => splashScreenViewModel.disposeStreams(),
     ));
   });
   //runApp(const MyApp());

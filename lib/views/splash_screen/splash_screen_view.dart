@@ -12,7 +12,9 @@ class SplashScreen extends StatelessWidget {
     return ViewModelBuilder<SplashScreenViewModel>.reactive(
         viewModelBuilder: () => SplashScreenViewModel(),
         onModelReady: (model) => model.init(),
-        builder: (context, child, viewModel) {
+        disposeViewModel: false,
+        builder: (context, viewModel, child) {
+          viewModel.checkConnectivityState();
           return Scaffold(
             backgroundColor: MyColors.blue1,
             body: Center(

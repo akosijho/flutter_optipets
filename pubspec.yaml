@@ -40,6 +40,9 @@ dependencies:
   stacked_services: ^0.9.5
   injectable: ^1.5.3
 
+  # These 2 packages used to listen for connectivity chenges
+  connectivity_plus: ^2.3.6+1
+  internet_connection_checker: ^0.0.1+4
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
