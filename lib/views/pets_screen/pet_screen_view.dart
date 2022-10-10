@@ -35,7 +35,7 @@ class PetScreenView extends StatelessWidget {
                   itemCount: 20),
             ),
             bottomNavigationBar: const MyBottomAppBar(
-              isPets: true,
+              isPets: true
             ),
           );
         });
