@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "123934579832",
+    "project_id": "optipets",
+    "storage_bucket": "optipets.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123934579832:android:538171b55e0e5dcbe7218d",
+        "android_client_info": {
+          "package_name": "com.boholvet.optipets"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "123934579832-hirc0vfdmmit6ushfefoaupfke185s2h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCk5CQ4JLNbBEspCQJ5Rw9wg-B7Zrlu4v8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "123934579832-hirc0vfdmmit6ushfefoaupfke185s2h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
