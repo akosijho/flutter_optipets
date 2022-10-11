@@ -31,7 +31,7 @@ class MyBottomAppBar extends StatelessWidget {
               shape: BoxShape.rectangle,
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
-                width: 1,
+                width: 2,
                 style: BorderStyle.solid,
                 color: Colors.grey,
               ),

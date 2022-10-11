@@ -31,57 +31,74 @@ class PetItem extends StatelessWidget {
                 .pushNamed(Routes.petProfile);
       },
       child: Container(
-        height: 64,
+        height: 72,
         width: double.infinity,
         decoration: BoxDecoration(
           color: Theme.of(context).scaffoldBackgroundColor,
           shape: BoxShape.rectangle,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Row(
-              children: [
-                Container(
-                    width: 56,
-                    height: 56,
-                    decoration: const BoxDecoration(shape: BoxShape.circle),
-                    child: Image.asset(image)),
-                const SizedBox(
-                  width: 8,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      name,
-                      style: Theme.of(context).textTheme.headline5,
-                      textAlign: TextAlign.left,
-                    ),
-                    const SizedBox(
-                      height: 4,
-                    ),
-                    Text(
-                      breed,
-                      style: Theme.of(context).textTheme.bodyText1,
-                      textAlign: TextAlign.left,
-                    ),
-                  ],
-                ),
-              ],
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+            width: 2,
+            style: BorderStyle.solid,
+            color: Colors.grey,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5), //color of shadow
+              spreadRadius: 5, //spread radius
+              blurRadius: 7, // blur radius
+              offset: const Offset(0, 2),
             ),
-            showActions
-                ? IconButton(
-                    icon: SvgPicture.asset(
-                      SvgIcons.infoIcon,
-                      width: 24,
-                    ),
-                    onPressed: () {},
-                  )
-                : Container(),
           ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                children: [
+                  Container(
+                      width: 56,
+                      height: 56,
+                      decoration: const BoxDecoration(shape: BoxShape.circle),
+                      child: Image.asset(image)),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        name,
+                        style: Theme.of(context).textTheme.headline5,
+                        textAlign: TextAlign.left,
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Text(
+                        breed,
+                        style: Theme.of(context).textTheme.bodyText1,
+                        textAlign: TextAlign.left,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              showActions
+                  ? IconButton(
+                      icon: SvgPicture.asset(
+                        SvgIcons.infoIcon,
+                        width: 24,
+                      ),
+                      onPressed: () {},
+                    )
+                  : Container(),
+            ],
+          ),
         ),
       ),
     );
