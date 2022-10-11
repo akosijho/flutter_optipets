@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_optipets/utils/constants.dart';
 import 'package:flutter_optipets/utils/svg_icons.dart';
 import 'package:flutter_optipets/views/appointment_screen/appointment_view.dart';
 import 'package:flutter_optipets/views/customer_profile/customer_profile_view.dart';
@@ -24,29 +25,41 @@ class MyBottomAppBar extends StatelessWidget {
         disposeViewModel: false,
         builder: (context, viewModel, child) {
           return Container(
-            width: MediaQuery.of(context).size.width,
-            height: 72,
-            decoration: BoxDecoration(
-              color: Theme.of(context).bottomAppBarColor,
-              shape: BoxShape.rectangle,
-              border: const Border(
-                top: BorderSide(
+            width: deviceWidth,
+            height: 96,
+            color: Colors.transparent,
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Container(
+              width: MediaQuery.of(context).size.width - 16,
+              height: 72,
+              decoration: BoxDecoration(
+                color: Theme.of(context).bottomAppBarColor,
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(24),
+                border: Border.all(
                   width: 1,
                   style: BorderStyle.solid,
                   color: Colors.grey,
                 ),
               ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  iconButton("Pets", SvgIcons.pawIcon, isPets ?? false, const PetScreenView(), viewModel),
-                  iconButton("Appointment", SvgIcons.appointmentIcon,
-                      isAppointment ?? false, const AppointmentView(), viewModel),
-                  iconButton("Me", SvgIcons.profileIcon, isProfile ?? false, const CustomerProfileView(), viewModel),
-                ],
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    iconButton("Pets", SvgIcons.pawIcon, isPets ?? false,
+                        const PetScreenView(), viewModel),
+                    iconButton(
+                        "Appointment",
+                        SvgIcons.appointmentIcon,
+                        isAppointment ?? false,
+                        const AppointmentView(),
+                        viewModel),
+                    iconButton("Me", SvgIcons.profileIcon, isProfile ?? false,
+                        const CustomerProfileView(), viewModel),
+                  ],
+                ),
               ),
             ),
           );
@@ -59,14 +72,17 @@ class MyBottomAppBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         IconButton(
-            onPressed: () {
-              myBottomAppBarActions.routeTo(route);
-            },
-            icon: SvgPicture.asset(icon,
-                color: isSelected
-                    ? Theme.of(Get.context!).toggleableActiveColor
-                    : Theme.of(Get.context!).disabledColor,
-                    width: 48,),),
+          onPressed: () {
+            myBottomAppBarActions.routeTo(route);
+          },
+          icon: SvgPicture.asset(
+            icon,
+            color: isSelected
+                ? Theme.of(Get.context!).toggleableActiveColor
+                : Theme.of(Get.context!).disabledColor,
+            width: 48,
+          ),
+        ),
         Expanded(
           child: Text(
             label,
