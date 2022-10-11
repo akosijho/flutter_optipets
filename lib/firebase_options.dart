@@ -62,21 +62,21 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyA_S8hepDkwOBid_QCoLOsu6nOUCEBXMSg',
-    appId: '1:123934579832:ios:345a3b3d5ec6f0dbe7218d',
+    appId: '1:123934579832:ios:bf3d379285041c86e7218d',
     messagingSenderId: '123934579832',
     projectId: 'optipets',
     storageBucket: 'optipets.appspot.com',
-    iosClientId: '123934579832-l5oolp76is8jbpl5phopm1jr0d8gbhrn.apps.googleusercontent.com',
-    iosBundleId: 'com.example.flutterOptipets',
+    iosClientId: '123934579832-no6mo1vir9habr6m979oburcc0qbqk2h.apps.googleusercontent.com',
+    iosBundleId: 'com.boholvet.optipets',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyA_S8hepDkwOBid_QCoLOsu6nOUCEBXMSg',
-    appId: '1:123934579832:ios:345a3b3d5ec6f0dbe7218d',
+    appId: '1:123934579832:ios:bf3d379285041c86e7218d',
     messagingSenderId: '123934579832',
     projectId: 'optipets',
     storageBucket: 'optipets.appspot.com',
-    iosClientId: '123934579832-l5oolp76is8jbpl5phopm1jr0d8gbhrn.apps.googleusercontent.com',
-    iosBundleId: 'com.example.flutterOptipets',
+    iosClientId: '123934579832-no6mo1vir9habr6m979oburcc0qbqk2h.apps.googleusercontent.com',
+    iosBundleId: 'com.boholvet.optipets',
   );
 }
