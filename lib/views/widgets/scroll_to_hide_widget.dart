@@ -21,7 +21,6 @@ class ScrollToHide extends StatelessWidget{
           height: viewModel.isVisible ? height : 0,
           child: Wrap(children: [widget]),);
       });
-   
   }
 
 }
