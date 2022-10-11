@@ -7,6 +7,9 @@ import 'package:stacked/stacked_annotations.dart';
 class ApplicationViewModel extends ChangeNotifier {
   final NavigationService navigationService = locator<NavigationService>();
 
+  // Controlls navigation on pet, appointment, and profile screen
+   ScrollController scrollController = ScrollController();
+
   // Demo list to show querying
   List<String> searchTerms = [
     "Apple",
