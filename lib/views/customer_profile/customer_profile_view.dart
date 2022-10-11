@@ -31,8 +31,11 @@ class CustomerProfileView extends StatelessWidget {
               _buildOption("Sign Out", SvgIcons.signOut),
             ],
           )),
-      bottomNavigationBar: const MyBottomAppBar(
-        isProfile: true,
+      bottomNavigationBar: const Padding(
+        padding: EdgeInsets.only(bottom: 8.0),
+        child: MyBottomAppBar(
+          isProfile: true,
+        ),
       ),
     );
   }
