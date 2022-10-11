@@ -1,8 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_optipets/app/app.locator.dart';
+import 'package:flutter_optipets/views/application/application_view_model.dart';
 
 class AppointmentViewModel extends ChangeNotifier {
+  final ApplicationViewModel applicationViewModel = locator<ApplicationViewModel>();
   final List<Widget> tabs = [
      const SizedBox(
       height: 24,

@@ -9,6 +9,7 @@ class AppointmentList extends ViewModelWidget<AppointmentViewModel> {
   @override
   Widget build(BuildContext context, AppointmentViewModel viewModel) {
     return ListView.separated(
+      controller: viewModel.applicationViewModel.scrollController,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       itemCount: 10,
       itemBuilder: (BuildContext context, int index) => const AppointmentItem(),
