@@ -1,19 +1,28 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_optipets/app/app.locator.dart';
 import 'package:flutter_optipets/app/app.router.dart';
 import 'package:flutter_optipets/core/services/navigation/navigation_sevice.dart';
+import 'package:flutter_optipets/firebase_options.dart';
 import 'package:flutter_optipets/utils/my_themes.dart';
 import 'package:flutter_optipets/views/splash_screen/splash_screen_view.dart';
 import 'package:flutter_optipets/views/splash_screen/splash_screen_view_model.dart';
 import 'package:get/get.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  FirebaseApp app = await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  print('Initialized default app $app');
+
   setupLocator();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
-        final SplashScreenViewModel splashScreenViewModel = locator<SplashScreenViewModel>();
+    final SplashScreenViewModel splashScreenViewModel =
+        locator<SplashScreenViewModel>();
     runApp(GetMaterialApp(
       theme: MyThemes.light,
       onGenerateRoute: StackedRouter().onGenerateRoute,

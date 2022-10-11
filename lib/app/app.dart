@@ -1,3 +1,5 @@
+import 'package:flutter_optipets/core/services/firebase_service/firebase_auth.dart';
+import 'package:flutter_optipets/core/services/firebase_services_impl/firebase_auth_impl.dart';
 import 'package:flutter_optipets/core/services/navigation/navigation_service_impl.dart';
 import 'package:flutter_optipets/core/services/navigation/navigation_sevice.dart';
 import 'package:flutter_optipets/views/appointment_screen/appointment_view.dart';
@@ -25,5 +27,6 @@ import 'package:flutter_optipets/views/application/application_view_model.dart';
   LazySingleton(classType: ApplicationViewModel, asType: ApplicationViewModel),
   LazySingleton(classType: NavigationServiceImpl, asType: NavigationService),
   LazySingleton(classType: SplashScreenViewModel, asType: SplashScreenViewModel),
+  LazySingleton(classType: FirebaseAuthenticatioImpl, asType: FirebaseAuthentication),
 ])
 class App {}

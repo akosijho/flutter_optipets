@@ -127,7 +127,7 @@ class LoginView extends StatelessWidget {
                                     ),
                                   ),
                                   onPressed: () {
-                                    viewModel.login();
+                                    viewModel.signInAnon();
                                   },
                                   child: const Text(
                                     "Login",

@@ -4,7 +4,7 @@
 // StackedRouterGenerator
 // **************************************************************************
 
-// ignore_for_file: public_member_api_docs, unused_import
+// ignore_for_file: public_member_api_docs
 
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
