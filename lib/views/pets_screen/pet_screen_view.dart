@@ -3,6 +3,7 @@ import 'package:flutter_optipets/utils/svg_images.dart';
 import 'package:flutter_optipets/views/pets_screen/pet_item.dart';
 import 'package:flutter_optipets/views/pets_screen/pet_screen_view_model.dart';
 import 'package:flutter_optipets/views/widgets/bottom_appbar.dart';
+import 'package:flutter_optipets/views/widgets/scroll_to_hide_widget.dart';
 import 'package:flutter_optipets/views/widgets/top_appbar.dart';
 import 'package:stacked/stacked.dart';
 
@@ -18,9 +19,11 @@ class PetScreenView extends StatelessWidget {
           return Scaffold(
             appBar: myAppBar("Pets"),
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            extendBody: true,
             body: SizedBox(
               width: MediaQuery.of(context).size.width,
               child: ListView.separated(
+                  controller: viewModel.applicationViewModel.scrollController,
                   padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
@@ -34,8 +37,12 @@ class PetScreenView extends StatelessWidget {
                   separatorBuilder: (context, _) => const SizedBox(height: 2),
                   itemCount: 20),
             ),
-            bottomNavigationBar: const MyBottomAppBar(
-              isPets: true
+            bottomNavigationBar: ScrollToHide(
+              controller: viewModel.applicationViewModel.scrollController,
+              widget: const MyBottomAppBar(
+                isPets: true
+              ), duration: const Duration(milliseconds: 200), 
+              height: 96,
             ),
           );
         });
