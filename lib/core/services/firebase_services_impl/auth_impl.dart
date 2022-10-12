@@ -37,4 +37,16 @@ class AuthImpl implements Auth {
       rethrow;
     }
   }
+  
+  //sign in with credentials
+  @override
+  Future<UserObject?> signInWithCredentials(String email, String password) async{
+    try{
+    UserCredential result = await _auth.signInWithEmailAndPassword(email: email, password: password);
+    User user = result.user!;
+    return userFromFirebase(user);
+    }catch(e){
+      rethrow;
+    }
+  }
 }

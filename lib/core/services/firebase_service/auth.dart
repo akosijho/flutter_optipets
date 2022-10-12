@@ -9,6 +9,9 @@ abstract class Auth {
   //sign in anon
   Future signInAnon();
 
+  //sign in with credentials
+  Future signInWithCredentials(String email, String password);
+
   //sign out
   Future signOut();
 }

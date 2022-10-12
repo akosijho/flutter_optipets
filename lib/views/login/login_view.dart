@@ -16,7 +16,6 @@ class LoginView extends StatelessWidget {
         disposeViewModel: false,
         builder: (context, viewModel, child) {
           return Scaffold(
-            extendBodyBehindAppBar: true,
             backgroundColor: MyColors.blue1,
             body: SizedBox(
               width: MediaQuery.of(context).size.width,
@@ -30,7 +29,8 @@ class LoginView extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        SvgPicture.asset(SvgImages.logo, width: 196, height: 183),
+                        SvgPicture.asset(SvgImages.logo,
+                            width: 196, height: 183),
                         Text(
                           appName.toLowerCase(),
                           style: Theme.of(context).textTheme.headline3,
@@ -127,7 +127,10 @@ class LoginView extends StatelessWidget {
                                     ),
                                   ),
                                   onPressed: () {
-                                    viewModel.signInAnon();
+                                    print(viewModel.usernameFieldController.text);
+                                    viewModel.signIn(
+                                        viewModel.usernameFieldController.text,
+                                        viewModel.passwordFieldController.text);
                                   },
                                   child: const Text(
                                     "Login",
