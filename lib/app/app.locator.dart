@@ -9,8 +9,8 @@
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 
-import '../core/services/firebase_service/firebase_auth.dart';
-import '../core/services/firebase_services_impl/firebase_auth_impl.dart';
+import '../core/services/firebase_service/auth.dart';
+import '../core/services/firebase_services_impl/auth_impl.dart';
 import '../core/services/navigation/navigation_service_impl.dart';
 import '../core/services/navigation/navigation_sevice.dart';
 import '../views/application/application_view_model.dart';
@@ -30,6 +30,5 @@ void setupLocator({String? environment, EnvironmentFilter? environmentFilter}) {
       .registerLazySingleton<NavigationService>(() => NavigationServiceImpl());
   locator.registerLazySingleton<SplashScreenViewModel>(
       () => SplashScreenViewModel());
-  locator.registerLazySingleton<FirebaseAuthentication>(
-      () => FirebaseAuthenticatioImpl());
+  locator.registerLazySingleton<Auth>(() => AuthImpl());
 }

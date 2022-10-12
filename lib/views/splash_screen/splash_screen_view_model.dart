@@ -1,11 +1,12 @@
 import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/app/app.locator.dart';
 import 'package:flutter_optipets/app/app.router.dart';
-import 'package:flutter_optipets/core/services/navigation/navigation_sevice.dart';
 import 'package:flutter_optipets/utils/constants.dart';
 import 'package:flutter_optipets/utils/my_colors.dart';
+import 'package:flutter_optipets/views/application/application_view_model.dart';
 import 'package:flutter_optipets/views/widgets/my_circular_progress.dart';
 import 'package:get/get.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -13,14 +14,26 @@ import 'package:stacked/stacked_annotations.dart';
 
 @LazySingleton(asType: SplashScreenViewModel)
 class SplashScreenViewModel extends ChangeNotifier {
-  final NavigationService navigationService = locator<NavigationService>();
+  final ApplicationViewModel applicationViewModel =
+      locator<ApplicationViewModel>();
   late StreamSubscription connectivitySubscription;
+  late StreamSubscription<User?> authChange;
   bool isConnected = false;
   bool isAlertSet = false;
 
-  void init() async {
-    await Future.delayed(const Duration(seconds: 6));
-    navigationService.pushReplacementNamed(Routes.login);
+  void init() {
+    //reads if a user is still logged in
+    authChange = FirebaseAuth.instance.userChanges().listen((User? user) async {
+      if (user == null) {
+        await Future.delayed(const Duration(seconds: 6));
+        await applicationViewModel.navigationService
+            .pushReplacementNamed(Routes.login);
+      } else {
+        await Future.delayed(const Duration(seconds: 6));
+        await applicationViewModel.navigationService
+            .pushReplacementNamed(Routes.petScreen);
+      }
+    });
     notifyListeners();
   }
 
@@ -41,6 +54,7 @@ class SplashScreenViewModel extends ChangeNotifier {
   // dispose active streams
   void disposeStreams() {
     connectivitySubscription.cancel();
+    authChange.cancel();
   }
 
   //dialog box for disabled connectivity
@@ -69,7 +83,7 @@ class SplashScreenViewModel extends ChangeNotifier {
                       backgroundColor: Colors.black45,
                     ),
                     onPressed: () async {
-                      navigationService.pop();
+                      applicationViewModel.navigationService.pop();
                       isAlertSet = false;
                       notifyListeners();
                       isConnected =
