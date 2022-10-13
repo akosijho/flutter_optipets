@@ -42,10 +42,11 @@ class AuthImpl implements Auth {
   @override
   Future<UserObject?> signInWithCredentials(String email, String password) async{
     try{
-    UserCredential result = await _auth.signInWithEmailAndPassword(email: email, password: password);
-    User user = result.user!;
-    return userFromFirebase(user);
-    }catch(e){
+    final result = await _auth.signInWithEmailAndPassword(email: email, password: password);
+    // User user = result.user!;
+    print (result);
+    return userFromFirebase(result.user);
+    } on FirebaseAuthException {
       rethrow;
     }
   }

@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/app/app.locator.dart';
 import 'package:flutter_optipets/app/app.router.dart';
 import 'package:flutter_optipets/views/application/application_view_model.dart';
+import 'package:flutter_optipets/views/widgets/show_snackbar.dart';
 
 class LoginViewModel extends ChangeNotifier {
   final ApplicationViewModel applicationViewModel =
@@ -9,6 +11,7 @@ class LoginViewModel extends ChangeNotifier {
   TextEditingController usernameFieldController = TextEditingController();
   TextEditingController passwordFieldController = TextEditingController();
 
+  // signin anonymously
   void signInAnon() async {
     try {
       dynamic result = await applicationViewModel.auth.signInAnon();
@@ -23,6 +26,7 @@ class LoginViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  // sign in with credentials
   void signIn(String email, String password) async {
     print(email);
     print(password);
@@ -34,8 +38,16 @@ class LoginViewModel extends ChangeNotifier {
       } else {
         return null;
       }
-    } catch (e) {
-      rethrow;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+        showSnackbar(title: 'Oops', message: 'No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print( 'Wrong password provided for that user.');
+        showSnackbar(title: 'Oops', message: 'Wrong password provided for that user.');
+      }else{
+        showSnackbar(title: 'Oops', message: 'Something went wrong. Please try again');
+      }
     }
     notifyListeners();
   }

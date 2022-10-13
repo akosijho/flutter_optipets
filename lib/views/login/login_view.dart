@@ -54,6 +54,7 @@ class LoginView extends StatelessWidget {
                             children: [
                               TextFormField(
                                 controller: viewModel.usernameFieldController,
+                                keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
                                   isDense: true,
                                   border: OutlineInputBorder(
