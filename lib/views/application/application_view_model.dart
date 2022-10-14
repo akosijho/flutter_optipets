@@ -12,6 +12,10 @@ class ApplicationViewModel extends ChangeNotifier {
   //firebase auth
   final Auth auth = locator<Auth>(); 
 
+  // key for form validation
+  final formGlobalKey = GlobalKey<FormState>();
+
+  // store user information
   UserObject? userObject;
 
   // Controlls navigation on pet, appointment, and profile screen

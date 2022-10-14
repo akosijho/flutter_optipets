@@ -64,6 +64,7 @@ class SplashScreenViewModel extends ChangeNotifier {
           return Future.value(isConnected);
         },
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           body: SizedBox(
             width: deviceWidth,
             height: deviceHeight,

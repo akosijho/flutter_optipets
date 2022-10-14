@@ -44,7 +44,6 @@ class AuthImpl implements Auth {
     try{
     final result = await _auth.signInWithEmailAndPassword(email: email, password: password);
     // User user = result.user!;
-    print (result);
     return userFromFirebase(result.user);
     } on FirebaseAuthException {
       rethrow;

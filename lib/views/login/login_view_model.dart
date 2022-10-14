@@ -4,8 +4,9 @@ import 'package:flutter_optipets/app/app.locator.dart';
 import 'package:flutter_optipets/app/app.router.dart';
 import 'package:flutter_optipets/views/application/application_view_model.dart';
 import 'package:flutter_optipets/views/widgets/show_snackbar.dart';
+import 'package:stacked/stacked.dart';
 
-class LoginViewModel extends ChangeNotifier {
+class LoginViewModel extends BaseViewModel {
   final ApplicationViewModel applicationViewModel =
       locator<ApplicationViewModel>();
   TextEditingController usernameFieldController = TextEditingController();
@@ -28,27 +29,26 @@ class LoginViewModel extends ChangeNotifier {
 
   // sign in with credentials
   void signIn(String email, String password) async {
-    print(email);
-    print(password);
+    setBusy(true);
     try {
       final user = await applicationViewModel.auth
           .signInWithCredentials(email, password);
       if (user != null) {
         applicationViewModel.userObject = user;
+        await applicationViewModel.navigationService.pushReplacementNamed(Routes.petScreen);
       } else {
         return null;
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print('No user found for that email.');
         showSnackbar(title: 'Oops', message: 'No user found for that email.');
       } else if (e.code == 'wrong-password') {
-        print( 'Wrong password provided for that user.');
         showSnackbar(title: 'Oops', message: 'Wrong password provided for that user.');
       }else{
         showSnackbar(title: 'Oops', message: 'Something went wrong. Please try again');
       }
     }
+    setBusy(false);
     notifyListeners();
   }
 }
