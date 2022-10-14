@@ -29,6 +29,7 @@ class SplashScreenViewModel extends ChangeNotifier {
         await applicationViewModel.navigationService
             .pushReplacementNamed(Routes.login);
       } else {
+        print(user.displayName);
         applicationViewModel.userObject = applicationViewModel.auth.userFromFirebase(user);
         await Future.delayed(const Duration(seconds: 6));
         await applicationViewModel.navigationService
@@ -90,7 +91,7 @@ class SplashScreenViewModel extends ChangeNotifier {
                       notifyListeners();
                       isConnected =
                           await InternetConnectionChecker().hasConnection;
-                      if (!isConnected && isAlertSet == false) {
+                      if (!isConnected && isAlertSet == false) { 
                         dialogBox();
                         isAlertSet = true;
                         notifyListeners();
