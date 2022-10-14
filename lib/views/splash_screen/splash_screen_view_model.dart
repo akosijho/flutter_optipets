@@ -29,7 +29,7 @@ class SplashScreenViewModel extends ChangeNotifier {
         await applicationViewModel.navigationService
             .pushReplacementNamed(Routes.login);
       } else {
-        print(user.displayName);
+        // print(user.displayName);
         applicationViewModel.userObject = applicationViewModel.auth.userFromFirebase(user);
         await Future.delayed(const Duration(seconds: 6));
         await applicationViewModel.navigationService

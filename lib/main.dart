@@ -12,10 +12,10 @@ import 'package:get/get.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  FirebaseApp app = await Firebase.initializeApp(
+  await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  print('Initialized default app $app');
+  // print('Initialized default app $app');
   setupLocator();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {

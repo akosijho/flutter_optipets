@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class UserObject extends Equatable{
-  UserObject({required this.uid});
+  const UserObject({required this.uid});
 
   final String uid;
 

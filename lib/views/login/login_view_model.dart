@@ -17,7 +17,7 @@ class LoginViewModel extends BaseViewModel {
     try {
       dynamic result = await applicationViewModel.auth.signInAnon();
       if (result != null) {
-        print("Result: $result");
+        // print("Result: $result");
         await applicationViewModel.navigationService
             .pushReplacementNamed(Routes.petScreen);
       }

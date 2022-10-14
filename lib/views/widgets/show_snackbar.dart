@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/utils/constants.dart';
 import 'package:flutter_optipets/utils/my_colors.dart';
@@ -12,9 +14,9 @@ SnackbarController showSnackbar(
     snackPosition: SnackPosition.BOTTOM,
     backgroundColor: MyColors.blueButtonColor,
     borderRadius: 20,
-    margin: EdgeInsets.all(16),
+    margin: const EdgeInsets.all(16),
     colorText: Colors.white,
-    duration: Duration(seconds: 4),
+    duration: const Duration(seconds: 4),
     isDismissible: true,
     dismissDirection: DismissDirection.horizontal,
     forwardAnimationCurve: Curves.easeOutBack,
