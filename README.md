@@ -17,6 +17,7 @@ samples, guidance on mobile development, and a full API reference.
 
 
 Use firebase_core package for firebase connection
+-  firebase_auth for authentication
 
 Remove .example in ios/Runner/GoogleService-Info.plist.example and macos/Runner/GoogleService-Info.plist.example.
 

@@ -20,6 +20,7 @@ class AppointmentView extends StatelessWidget {
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               appBar: myAppBar("Appointments",
                   tabs: viewModel.tabs, isAppointment: true),
+              extendBody: true,
               body: const TabBarView(
                 children: [
                   AppointmentList(),

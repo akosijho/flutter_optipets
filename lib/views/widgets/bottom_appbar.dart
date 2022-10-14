@@ -31,16 +31,16 @@ class MyBottomAppBar extends StatelessWidget {
               shape: BoxShape.rectangle,
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
-                width: 2,
+                width: 0.1,
                 style: BorderStyle.solid,
                 color: Colors.grey,
               ),
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.5), //color of shadow
-                  spreadRadius: 5, //spread radius
+                  // spreadRadius: 5, //spread radius
                   blurRadius: 7, // blur radius
-                  offset: const Offset(0, 2),
+                  offset: const Offset(0, 20),
                 ),
               ],
             ),

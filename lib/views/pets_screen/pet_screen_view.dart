@@ -19,11 +19,12 @@ class PetScreenView extends StatelessWidget {
           return Scaffold(
             appBar: myAppBar("Pets"),
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            extendBody: true,
             body: SizedBox(
               width: MediaQuery.of(context).size.width,
               child: ListView.separated(
                   controller: viewModel.applicationViewModel.scrollController,
-                  padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+                  padding: const EdgeInsets.all(8),
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
                   physics: const BouncingScrollPhysics(),
@@ -33,8 +34,8 @@ class PetScreenView extends StatelessWidget {
                         name: "Pet Name",
                         breed: "Poodle", image: SvgImages.temp,
                       ),
-                  separatorBuilder: (context, _) => const SizedBox(height: 4),
-                  itemCount: 20),
+                  separatorBuilder: (context, _) => const SizedBox(height: 8),
+                  itemCount: 11),
             ),
             bottomNavigationBar: ScrollToHide(
               controller: viewModel.applicationViewModel.scrollController,
