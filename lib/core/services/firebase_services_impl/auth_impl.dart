@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_optipets/core/services/firebase_service/auth.dart';
 import 'package:flutter_optipets/models/user_object.dart';
