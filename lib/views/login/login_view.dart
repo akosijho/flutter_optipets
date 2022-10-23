@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/utils/constants.dart';
 import 'package:flutter_optipets/utils/input_validation_mixin.dart';

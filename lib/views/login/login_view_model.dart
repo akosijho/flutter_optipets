@@ -37,14 +37,7 @@ class LoginViewModel extends BaseViewModel {
           .signInWithCredentials(email, password);
       if (user != null) {
         // applicationViewModel.userObject = user;
-        print(user);
         //get user details from firestore
-        // final userDetails = applicationViewModel.firebaseFirestore.collection('uses').doc(user.uid).snapshots();
-        // //create complete userObject
-        // applicationViewModel.userObject = UserObject.fromJson(
-        //   userDetails.
-        // );
-        // print(applicationViewModel.userObject);
         info();
         await applicationViewModel.navigationService
             .pushReplacementNamed(Routes.petScreen);
@@ -79,9 +72,7 @@ class LoginViewModel extends BaseViewModel {
           name: data['name'],
           address: data['address'],
           contacts: data['contacts']);
-        print(applicationViewModel.userObject);
       },
-      onError: (e) => print("Error getting document: $e"),
     );
   }
 }

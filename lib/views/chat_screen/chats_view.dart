@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/utils/constants.dart';
-import 'package:flutter_optipets/utils/svg_images.dart';
-import 'package:flutter_optipets/views/pets_screen/pet_item.dart';
 import 'package:flutter_optipets/views/widgets/top_appbar.dart';
 
 class ChatsView extends StatelessWidget {

@@ -47,9 +47,7 @@ class SplashScreenViewModel extends ChangeNotifier {
                 name: data['name'],
                 address: data['address'],
                 contacts: data['contacts']);
-            print(applicationViewModel.userObject);
           },
-          onError: (e) => print("Error getting document: $e"),
         );
 
         await Future.delayed(const Duration(seconds: 6));
