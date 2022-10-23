@@ -35,10 +35,10 @@ class SplashScreenViewModel extends ChangeNotifier {
         applicationViewModel.userObject =
             applicationViewModel.auth.userFromFirebase(user);
 
-        final docRef = applicationViewModel.firebaseFirestore
+        //get user data from firestore
+        applicationViewModel.firebaseFirestore
             .collection("users")
-            .doc(applicationViewModel.userObject!.uid);
-        docRef.get().then(
+            .doc(applicationViewModel.userObject!.uid).get().then(
           (DocumentSnapshot doc) {
             final data = doc.data() as Map<String, dynamic>;
             // ...
