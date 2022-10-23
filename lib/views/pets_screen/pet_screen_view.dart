@@ -58,9 +58,8 @@ class PetScreenView extends StatelessWidget {
                     ),
                   );
                 }else{
-                  Scaffold(body: myCircularProgress());
+                 return Scaffold(body: myCircularProgress());
                 }
-                  return Scaffold(body: myCircularProgress());
               });
         });
   }
