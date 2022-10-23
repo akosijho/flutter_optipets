@@ -1,26 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_optipets/models/pet_object.dart';
 import 'package:flutter_optipets/utils/svg_icons.dart';
 import 'package:flutter_optipets/utils/svg_images.dart';
+import 'package:flutter_optipets/views/pet_profile/pet_profile_view_model.dart';
+import 'package:flutter_optipets/views/widgets/my_circular_progress.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:stacked/stacked.dart';
 
 class PetProfileView extends StatelessWidget {
-  const PetProfileView({Key? key}) : super(key: key);
+  const PetProfileView({Key? key, required this.petId, required this.petObject})
+      : super(key: key);
 
+  final String petId;
+  final PetObject petObject;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: thisAppbar(),
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      body: ListView(
-        scrollDirection: Axis.vertical,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        shrinkWrap: true,
-        children: [
-          petStats(
-              SvgIcons.pawOutlined, "Spaniel", "10.3 kg", "03.31.19", "Male"),
-        ],
-      ),
+    return ViewModelBuilder<PetProfileViewModel>.reactive(
+      viewModelBuilder: () => PetProfileViewModel(petId: petId),
+      disposeViewModel: false,
+      builder: ((context, model, child) {
+        return StreamBuilder<PetObject>(
+            stream: model.pet,
+            builder: (context, snapshot) {
+              if (snapshot.hasData && snapshot.data != null) {
+                return Scaffold(
+                  appBar: thisAppbar(),
+                  backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                  body: ListView(
+                    scrollDirection: Axis.vertical,
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    shrinkWrap: true,
+                    children: [
+                      petStats(
+                          SvgIcons.pawOutlined,
+                          petObject.breed ?? '',
+                          "10.3 kg",
+                          petObject.birthday ?? '',
+                          petObject.sex ?? ''),
+                    ],
+                  ),
+                );
+              } else {
+                return Scaffold(
+                  body: Center(child: myCircularProgress()),
+                );
+              }
+            });
+      }),
     );
   }
 
@@ -41,7 +69,7 @@ class PetProfileView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Pet Name",
+                    petObject.name ?? '',
                     style: TextStyle(
                       fontSize: 24,
                       color: Theme.of(Get.context!).primaryColor,

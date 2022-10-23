@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/app/app.locator.dart';
 import 'package:flutter_optipets/core/services/firebase_service/auth.dart';
@@ -20,6 +21,9 @@ class ApplicationViewModel extends ChangeNotifier {
 
   // Controlls navigation on pet, appointment, and profile screen
    ScrollController scrollController = ScrollController();
+
+   //instance of FirebaseFiresore
+   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
   // Demo list to show querying
   List<String> searchTerms = [

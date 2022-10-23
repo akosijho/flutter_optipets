@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/utils/my_colors.dart';
-import 'package:flutter_optipets/utils/svg_images.dart';
-import 'package:flutter_optipets/views/pets_screen/pet_item.dart';
 
 class SearchSuggestions extends StatelessWidget {
   const SearchSuggestions(
@@ -36,14 +34,15 @@ class SearchSuggestions extends StatelessWidget {
                       primary: false,
                       itemCount: matchQuery.length,
                       itemBuilder: (context, index) {
-                        var result = matchQuery[index];
-                        return PetItem(
-                          showActions: false,
-                          isInChatPage: false,
-                          name: result,
-                          breed: result,
-                          image: SvgImages.temp,
-                        );
+                        // var result = matchQuery[index];
+                        return Container();
+                        // return PetItem(
+                        //   showActions: false,
+                        //   isInChatPage: false,
+                        //   name: result,
+                        //   breed: result,
+                        //   image: SvgImages.temp,
+                        // );
                       },
                     ),
                   ],

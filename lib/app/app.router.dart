@@ -6,9 +6,11 @@
 
 // ignore_for_file: public_member_api_docs, unused_import
 
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 
+import '../models/pet_object.dart';
 import '../views/appointment_screen/appointment_view.dart';
 import '../views/chat_screen/chats_view.dart';
 import '../views/chat_screen/conversation_view/conversation_view.dart';
@@ -86,8 +88,13 @@ class StackedRouter extends RouterBase {
       );
     },
     PetProfileView: (data) {
+      var args = data.getArgs<PetProfileViewArguments>(nullOk: false);
       return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => const PetProfileView(),
+        builder: (context) => PetProfileView(
+          key: args.key,
+          petId: args.petId,
+          petObject: args.petObject,
+        ),
         settings: data,
       );
     },
@@ -104,4 +111,17 @@ class StackedRouter extends RouterBase {
       );
     },
   };
+}
+
+/// ************************************************************************
+/// Arguments holder classes
+/// *************************************************************************
+
+/// PetProfileView arguments holder class
+class PetProfileViewArguments {
+  final Key? key;
+  final String petId;
+  final PetObject petObject;
+  PetProfileViewArguments(
+      {this.key, required this.petId, required this.petObject});
 }

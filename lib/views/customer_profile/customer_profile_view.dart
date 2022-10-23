@@ -17,6 +17,7 @@ class CustomerProfileView extends StatelessWidget {
     return ViewModelBuilder<CustomerProfileViewModel>.reactive(
         viewModelBuilder: () => CustomerProfileViewModel(),
         disposeViewModel: false,
+        onModelReady: (model) => model.init(),
         builder: (context, viewModel, child) {
           return Scaffold(
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,

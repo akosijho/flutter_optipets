@@ -1,9 +1,11 @@
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/app/app.locator.dart';
 import 'package:flutter_optipets/app/app.router.dart';
+import 'package:flutter_optipets/models/user_object.dart';
 import 'package:flutter_optipets/utils/constants.dart';
 import 'package:flutter_optipets/utils/my_colors.dart';
 import 'package:flutter_optipets/views/application/application_view_model.dart';
@@ -30,7 +32,24 @@ class SplashScreenViewModel extends ChangeNotifier {
             .pushReplacementNamed(Routes.login);
       } else {
         // print(user.displayName);
-        applicationViewModel.userObject = applicationViewModel.auth.userFromFirebase(user);
+        applicationViewModel.userObject =
+            applicationViewModel.auth.userFromFirebase(user);
+
+        //get user data from firestore
+        applicationViewModel.firebaseFirestore
+            .collection("users")
+            .doc(applicationViewModel.userObject!.uid).get().then(
+          (DocumentSnapshot doc) {
+            final data = doc.data() as Map<String, dynamic>;
+            // ...
+            applicationViewModel.userObject = UserObject(
+                uid: applicationViewModel.userObject!.uid,
+                name: data['name'],
+                address: data['address'],
+                contacts: data['contacts']);
+          },
+        );
+
         await Future.delayed(const Duration(seconds: 6));
         await applicationViewModel.navigationService
             .pushReplacementNamed(Routes.petScreen);
@@ -91,7 +110,7 @@ class SplashScreenViewModel extends ChangeNotifier {
                       notifyListeners();
                       isConnected =
                           await InternetConnectionChecker().hasConnection;
-                      if (!isConnected && isAlertSet == false) { 
+                      if (!isConnected && isAlertSet == false) {
                         dialogBox();
                         isAlertSet = true;
                         notifyListeners();
