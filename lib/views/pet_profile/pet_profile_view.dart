@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_optipets/models/pet_object.dart';
 import 'package:flutter_optipets/utils/svg_icons.dart';
 import 'package:flutter_optipets/utils/svg_images.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class PetProfileView extends StatelessWidget {
-  const PetProfileView({Key? key}) : super(key: key);
+  const PetProfileView({Key? key, required this.petId, required this.petObject})
+      : super(key: key);
 
+  final String petId;
+  final PetObject petObject;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,8 +21,8 @@ class PetProfileView extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         shrinkWrap: true,
         children: [
-          petStats(
-              SvgIcons.pawOutlined, "Spaniel", "10.3 kg", "03.31.19", "Male"),
+          petStats(SvgIcons.pawOutlined, petObject.breed ?? '', "10.3 kg",
+              petObject.birthday ?? '', petObject.sex ?? ''),
         ],
       ),
     );
@@ -41,7 +45,7 @@ class PetProfileView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Pet Name",
+                    petObject.name ?? '',
                     style: TextStyle(
                       fontSize: 24,
                       color: Theme.of(Get.context!).primaryColor,

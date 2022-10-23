@@ -21,14 +21,14 @@ class PetObject extends Equatable {
   final String? owner;
 
   factory PetObject.fromJson(Map<String, dynamic> json) => PetObject(
-        id: json['id'] as String,
-        name: json['name'] as String,
-        specie: json['specie'] as String,
-        breed: json['breed'] as String,
-        color: json['color'] as String,
-        birthday: json['birthday'] as String,
-        sex: json['sex'] as String,
-        owner: json['sex'] as String,
+        id: json['id'] as String?,
+        name: json['name'] as String?,
+        specie: json['specie'] as String?,
+        breed: json['breed'] as String?,
+        color: json['color'] as String?,
+        birthday: json['birthday'] as String?,
+        sex: json['sex'] as String?,
+        owner: json['owner'] as String?,
       );
 
   Map<String, dynamic> toFireStore() {

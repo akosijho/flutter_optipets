@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_optipets/utils/svg_images.dart';
+import 'package:flutter_optipets/models/pet_object.dart';
 import 'package:flutter_optipets/views/pets_screen/pet_item.dart';
 import 'package:flutter_optipets/views/pets_screen/pet_screen_view_model.dart';
 import 'package:flutter_optipets/views/widgets/bottom_appbar.dart';
@@ -37,13 +37,13 @@ class PetScreenView extends StatelessWidget {
                               scrollDirection: Axis.vertical,
                               physics: const BouncingScrollPhysics(),
                               itemBuilder: (context, index) {
-                                final pet = snapshot.data!.docs[index];
-                                print("pet id${pet.id}");
+                                final petData = snapshot.data!.docs[index];
+                                PetObject pet = PetObject.fromJson(petData.data() as Map<String, dynamic>);
                                 return PetItem(
                                     showActions: true,
                                     isInChatPage: false,
-                                    name: pet['name'],
-                                    breed: pet['breed'], image: SvgImages.temp,
+                                    petId: petData.id,
+                                    petObject: pet,
                                   );
                               },
                               separatorBuilder: (context, _) => const SizedBox(height: 8),

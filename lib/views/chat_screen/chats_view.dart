@@ -18,13 +18,16 @@ class ChatsView extends StatelessWidget {
             shrinkWrap: true,
             scrollDirection: Axis.vertical,
             physics: const BouncingScrollPhysics(),
-            itemBuilder: (context, index) => PetItem(
-                  showActions: false,
-                  isInChatPage: true,
-                  name: "Pet Name",
-                  breed: "Owned by Owner Name",
-                  image: SvgImages.tempProfile,
-                ),
+            itemBuilder: (context, index) {
+              return Container();
+              //  PetItem(
+              //     showActions: false,
+              //     isInChatPage: true,
+              //     // name: "Pet Name",
+              //     // breed: "Owned by Owner Name",
+              //     // image: SvgImages.tempProfile,
+              //   );
+            },
             separatorBuilder: (context, _) => const SizedBox(height: 2),
             itemCount: 20),
       ),

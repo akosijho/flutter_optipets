@@ -37,13 +37,14 @@ class SearchSuggestions extends StatelessWidget {
                       itemCount: matchQuery.length,
                       itemBuilder: (context, index) {
                         var result = matchQuery[index];
-                        return PetItem(
-                          showActions: false,
-                          isInChatPage: false,
-                          name: result,
-                          breed: result,
-                          image: SvgImages.temp,
-                        );
+                        return Container();
+                        // return PetItem(
+                        //   showActions: false,
+                        //   isInChatPage: false,
+                        //   name: result,
+                        //   breed: result,
+                        //   image: SvgImages.temp,
+                        // );
                       },
                     ),
                   ],

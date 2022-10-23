@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/app/app.locator.dart';
 import 'package:flutter_optipets/app/app.router.dart';
+import 'package:flutter_optipets/models/pet_object.dart';
 import 'package:flutter_optipets/utils/svg_icons.dart';
+import 'package:flutter_optipets/utils/svg_images.dart';
 import 'package:flutter_optipets/views/application/application_view_model.dart';
 import 'package:flutter_optipets/views/pets_screen/pet_screen_view_model.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,14 +12,14 @@ import 'package:stacked/stacked.dart';
 class PetItem extends ViewModelWidget<PetScreenVieModel> {
   PetItem({
     Key? key,
+    required this.petId,
+    required this.petObject,
     required this.showActions,
-    required this.name,
-    required this.breed,
-    required this.image,
     required this.isInChatPage,
   }) : super(key: key);
 
-  final String name, breed, image;
+  final String petId;
+  final PetObject petObject;
   final bool showActions, isInChatPage;
   final ApplicationViewModel applicationViewModel =
       locator<ApplicationViewModel>();
@@ -29,8 +31,10 @@ class PetItem extends ViewModelWidget<PetScreenVieModel> {
         isInChatPage
             ? await applicationViewModel.navigationService
                 .pushNamed(Routes.conversationView)
-            : await applicationViewModel.navigationService
-                .pushNamed(Routes.petProfile);
+            : await applicationViewModel.navigationService.pushNamed(
+                Routes.petProfile,
+                arguments: PetProfileViewArguments(
+                    petId: petId, petObject: petObject));
       },
       child: Container(
         height: 72,
@@ -65,7 +69,7 @@ class PetItem extends ViewModelWidget<PetScreenVieModel> {
                       width: 56,
                       height: 56,
                       decoration: const BoxDecoration(shape: BoxShape.circle),
-                      child: Image.asset(image)),
+                      child: Image.asset(SvgImages.temp)),
                   const SizedBox(
                     width: 8,
                   ),
@@ -74,7 +78,7 @@ class PetItem extends ViewModelWidget<PetScreenVieModel> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        name,
+                        petObject.name!,
                         style: Theme.of(context).textTheme.headline5,
                         textAlign: TextAlign.left,
                       ),
@@ -82,7 +86,7 @@ class PetItem extends ViewModelWidget<PetScreenVieModel> {
                         height: 4,
                       ),
                       Text(
-                        breed,
+                        petObject.breed!,
                         style: Theme.of(context).textTheme.bodyText1,
                         textAlign: TextAlign.left,
                       ),

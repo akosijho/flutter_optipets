@@ -26,9 +26,7 @@ class PetScreenVieModel extends BaseViewModel {
         .collection('pets')
         .where('owner', isEqualTo: user.uid)
         .snapshots();
-  }
-
-  void getPets() async {
-      
+       
+    notifyListeners();
   }
 }
