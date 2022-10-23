@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/app/app.locator.dart';
 import 'package:flutter_optipets/app/app.router.dart';
+import 'package:flutter_optipets/models/user_object.dart';
 import 'package:flutter_optipets/views/application/application_view_model.dart';
 import 'package:flutter_optipets/views/widgets/show_snackbar.dart';
 import 'package:stacked/stacked.dart';
@@ -34,8 +36,18 @@ class LoginViewModel extends BaseViewModel {
       final user = await applicationViewModel.auth
           .signInWithCredentials(email, password);
       if (user != null) {
-        applicationViewModel.userObject = user;
-        await applicationViewModel.navigationService.pushReplacementNamed(Routes.petScreen);
+        // applicationViewModel.userObject = user;
+        print(user);
+        //get user details from firestore
+        // final userDetails = applicationViewModel.firebaseFirestore.collection('uses').doc(user.uid).snapshots();
+        // //create complete userObject
+        // applicationViewModel.userObject = UserObject.fromJson(
+        //   userDetails.
+        // );
+        // print(applicationViewModel.userObject);
+        info();
+        await applicationViewModel.navigationService
+            .pushReplacementNamed(Routes.petScreen);
       } else {
         return null;
       }
@@ -43,12 +55,33 @@ class LoginViewModel extends BaseViewModel {
       if (e.code == 'user-not-found') {
         showSnackbar(title: 'Oops', message: 'No user found for that email.');
       } else if (e.code == 'wrong-password') {
-        showSnackbar(title: 'Oops', message: 'Wrong password provided for that user.');
-      }else{
-        showSnackbar(title: 'Oops', message: 'Something went wrong. Please try again');
+        showSnackbar(
+            title: 'Oops', message: 'Wrong password provided for that user.');
+      } else {
+        showSnackbar(
+            title: 'Oops', message: 'Something went wrong. Please try again');
       }
     }
     setBusy(false);
     notifyListeners();
+  }
+
+  void info() {
+    final docRef = applicationViewModel.firebaseFirestore
+        .collection("users")
+        .doc(applicationViewModel.userObject!.uid);
+    docRef.get().then(
+      (DocumentSnapshot doc) {
+        final data = doc.data() as Map<String, dynamic>;
+        // ...
+        applicationViewModel.userObject = UserObject(
+          uid: applicationViewModel.userObject!.uid,
+          name: data['name'],
+          address: data['address'],
+          contacts: data['contacts']);
+        print(applicationViewModel.userObject);
+      },
+      onError: (e) => print("Error getting document: $e"),
+    );
   }
 }

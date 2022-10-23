@@ -3,9 +3,11 @@ import 'package:flutter_optipets/app/app.locator.dart';
 import 'package:flutter_optipets/app/app.router.dart';
 import 'package:flutter_optipets/utils/svg_icons.dart';
 import 'package:flutter_optipets/views/application/application_view_model.dart';
+import 'package:flutter_optipets/views/pets_screen/pet_screen_view_model.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:stacked/stacked.dart';
 
-class PetItem extends StatelessWidget {
+class PetItem extends ViewModelWidget<PetScreenVieModel> {
   PetItem({
     Key? key,
     required this.showActions,
@@ -21,7 +23,7 @@ class PetItem extends StatelessWidget {
       locator<ApplicationViewModel>();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, PetScreenVieModel viewModel) {
     return InkWell(
       onTap: () async {
         isInChatPage

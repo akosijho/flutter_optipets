@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/utils/svg_images.dart';
 import 'package:flutter_optipets/views/pets_screen/pet_item.dart';
 import 'package:flutter_optipets/views/pets_screen/pet_screen_view_model.dart';
 import 'package:flutter_optipets/views/widgets/bottom_appbar.dart';
+import 'package:flutter_optipets/views/widgets/my_circular_progress.dart';
 import 'package:flutter_optipets/views/widgets/scroll_to_hide_widget.dart';
 import 'package:flutter_optipets/views/widgets/top_appbar.dart';
 import 'package:stacked/stacked.dart';
@@ -15,36 +17,51 @@ class PetScreenView extends StatelessWidget {
     return ViewModelBuilder<PetScreenVieModel>.reactive(
         viewModelBuilder: () => PetScreenVieModel(),
         disposeViewModel: false,
+        onModelReady: (model) => model.init,
         builder: (context, viewModel, child) {
-          return Scaffold(
-            appBar: myAppBar("Pets"),
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            extendBody: true,
-            body: SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: ListView.separated(
-                  controller: viewModel.applicationViewModel.scrollController,
-                  padding: const EdgeInsets.all(8),
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  physics: const BouncingScrollPhysics(),
-                  itemBuilder: (context, index) => PetItem(
-                        showActions: true,
-                        isInChatPage: false,
-                        name: "Pet Name",
-                        breed: "Poodle", image: SvgImages.temp,
-                      ),
-                  separatorBuilder: (context, _) => const SizedBox(height: 8),
-                  itemCount: 11),
-            ),
-            bottomNavigationBar: ScrollToHide(
-              controller: viewModel.applicationViewModel.scrollController,
-              widget: const MyBottomAppBar(
-                isPets: true
-              ), duration: const Duration(milliseconds: 200), 
-              height: 80,
-            ),
-          );
+          return StreamBuilder<QuerySnapshot>(
+              stream: viewModel.pets,
+              builder: (context, snapshot) {
+                if (snapshot.hasData && snapshot.data != null) {
+                  return Scaffold(
+                    appBar: myAppBar("Pets"),
+                    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                    extendBody: true,
+                    body: SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      child:
+                          ListView.separated(
+                              controller: viewModel.applicationViewModel.scrollController,
+                              padding: const EdgeInsets.all(8),
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              physics: const BouncingScrollPhysics(),
+                              itemBuilder: (context, index) {
+                                final pet = snapshot.data!.docs[index];
+                                print("pet id${pet.id}");
+                                return PetItem(
+                                    showActions: true,
+                                    isInChatPage: false,
+                                    name: pet['name'],
+                                    breed: pet['breed'], image: SvgImages.temp,
+                                  );
+                              },
+                              separatorBuilder: (context, _) => const SizedBox(height: 8),
+                              itemCount:  snapshot.data!.docs.length),
+                    ),
+                    bottomNavigationBar: ScrollToHide(
+                      controller:
+                          viewModel.applicationViewModel.scrollController,
+                      widget: const MyBottomAppBar(isPets: true),
+                      duration: const Duration(milliseconds: 200),
+                      height: 80,
+                    ),
+                  );
+                }else{
+                  Scaffold(body: myCircularProgress());
+                }
+                  return Scaffold(body: myCircularProgress());
+              });
         });
   }
 }
