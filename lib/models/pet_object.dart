@@ -10,7 +10,7 @@ class PetObject extends Equatable {
       this.birthday,
       this.sex,
       this.owner});
-
+  
   final String? id;
   final String? name;
   final String? specie;

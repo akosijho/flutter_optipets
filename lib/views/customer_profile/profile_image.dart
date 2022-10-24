@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/utils/svg_icons.dart';
 import 'package:flutter_optipets/utils/svg_images.dart';
@@ -40,31 +42,44 @@ class ProfileImage extends ViewModelWidget<CustomerProfileViewModel> {
                     child: CircleAvatar(
                       backgroundColor:
                           Theme.of(context).scaffoldBackgroundColor,
-                      child: Image.asset(SvgImages.tempProfile),
+                      backgroundImage: viewModel.imageFile != null
+                          ? FileImage(File(viewModel.imageFile!.path))
+                          : null,
+                      child: viewModel.imageFile != null
+                          ? null
+                          : Image.asset(SvgImages.tempProfile),
                     ),
                   ),
                   Positioned(
                       top: 120,
                       right: 24,
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          await viewModel.picker();
+                        },
                         icon: SvgPicture.asset(SvgIcons.pencilRound),
                       )),
                 ],
               ),
-              const SizedBox(height: 8,),
+              const SizedBox(
+                height: 8,
+              ),
               Text(viewModel.user.name!,
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w700,
-                color: Theme.of(context).textTheme.headline6!.color,
-              )),
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
+                    color: Theme.of(context).textTheme.headline6!.color,
+                  )),
               Text(viewModel.user.contacts!,
-              style: TextStyle(
-                fontSize: 10,
-                fontWeight: FontWeight.w700,
-                color: Theme.of(context).textTheme.headline6!.color!.withOpacity(0.7),
-              )),
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w700,
+                    color: Theme.of(context)
+                        .textTheme
+                        .headline6!
+                        .color!
+                        .withOpacity(0.7),
+                  )),
             ],
           ),
         ),

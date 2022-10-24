@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/models/pet_object.dart';
 import 'package:flutter_optipets/utils/svg_icons.dart';
@@ -20,8 +21,8 @@ class PetProfileView extends StatelessWidget {
       viewModelBuilder: () => PetProfileViewModel(petId: petId),
       disposeViewModel: false,
       builder: ((context, model, child) {
-        return StreamBuilder<PetObject>(
-            stream: model.pet,
+        return StreamBuilder<DocumentSnapshot>(
+            stream: model.petData,
             builder: (context, snapshot) {
               if (snapshot.hasData && snapshot.data != null) {
                 return Scaffold(
