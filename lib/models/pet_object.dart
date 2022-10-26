@@ -33,6 +33,7 @@ class PetObject extends Equatable {
 
   Map<String, dynamic> toFireStore() {
     return {
+      if (id != null) "id": id,
       if (name != null) "name": name,
       if (specie != null) "specie": specie,
       if (breed != null) "breed": breed,

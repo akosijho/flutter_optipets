@@ -40,15 +40,9 @@ class PetItem extends StatelessWidget {
           color: Theme.of(context).scaffoldBackgroundColor,
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(16),
-          // border: Border.all(
-          //   width: 2,
-          //   style: BorderStyle.solid,
-          //   color: Colors.grey,
-          // ),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.4), //color of shadow
-              // spreadRadius: 5, //spread radius
               blurRadius: 4, // blur radius
               offset: const Offset(0, 4),
             ),

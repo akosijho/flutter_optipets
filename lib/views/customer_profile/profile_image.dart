@@ -64,13 +64,13 @@ class ProfileImage extends ViewModelWidget<CustomerProfileViewModel> {
               const SizedBox(
                 height: 8,
               ),
-              Text(viewModel.user.name!,
+              Text('${viewModel.user!.firstName!} ${viewModel.user!.lastName!}',
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w700,
                     color: Theme.of(context).textTheme.headline6!.color,
                   )),
-              Text(viewModel.user.contacts!,
+              Text(viewModel.user!.contacts!,
                   style: TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.w700,

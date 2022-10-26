@@ -1,10 +1,10 @@
 import 'dart:async';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/app/app.locator.dart';
 import 'package:flutter_optipets/app/app.router.dart';
+import 'package:flutter_optipets/core/services/firebase_service/firestore_service/firestore_service.dart';
 import 'package:flutter_optipets/models/user_object.dart';
 import 'package:flutter_optipets/utils/constants.dart';
 import 'package:flutter_optipets/utils/my_colors.dart';
@@ -18,6 +18,7 @@ import 'package:stacked/stacked_annotations.dart';
 class SplashScreenViewModel extends ChangeNotifier {
   final ApplicationViewModel applicationViewModel =
       locator<ApplicationViewModel>();
+  final FirestoreService firestoreService = locator<FirestoreService>();
   late StreamSubscription connectivitySubscription;
   late StreamSubscription<User?> authChange;
   bool isConnected = false;
@@ -31,22 +32,12 @@ class SplashScreenViewModel extends ChangeNotifier {
         await applicationViewModel.navigationService
             .pushReplacementNamed(Routes.login);
       } else {
-        // print(user.displayName);
-        applicationViewModel.userObject =
-            applicationViewModel.auth.userFromFirebase(user);
 
         //get user data from firestore
-        applicationViewModel.firebaseFirestore
-            .collection("users")
-            .doc(applicationViewModel.userObject!.uid).get().then(
-          (DocumentSnapshot doc) {
-            final data = doc.data() as Map<String, dynamic>;
-            // ...
-            applicationViewModel.userObject = UserObject(
-                uid: applicationViewModel.userObject!.uid,
-                name: data['name'],
-                address: data['address'],
-                contacts: data['contacts']);
+         firestoreService.userRef
+            .doc(user.uid).get().then(
+          (doc) {
+            applicationViewModel.userObject = UserObject.fromJson(doc.data() as Map<String, dynamic>);
           },
         );
 

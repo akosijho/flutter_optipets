@@ -1,18 +1,20 @@
 import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_optipets/app/app.locator.dart';
 import 'package:flutter_optipets/app/app.router.dart';
 import 'package:flutter_optipets/models/user_object.dart';
 import 'package:flutter_optipets/views/application/application_view_model.dart';
+import 'package:flutter_optipets/views/widgets/photo_uploader.dart';
 import 'package:flutter_optipets/views/widgets/show_snackbar.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CustomerProfileViewModel extends ChangeNotifier{
 
   final ApplicationViewModel applicationViewModel = locator<ApplicationViewModel>();
   
-  late UserObject user;
+  UserObject? user ;
 
   void signOut() async{
     await applicationViewModel.auth.signOut();
@@ -22,6 +24,7 @@ class CustomerProfileViewModel extends ChangeNotifier{
 
   void init(){
     user = applicationViewModel.userObject!;
+    notifyListeners();
   }
 
    // some initialization code
@@ -37,6 +40,8 @@ class CustomerProfileViewModel extends ChangeNotifier{
     if(pick != null){
       imageFile = File(pick.path);
       picked = true;
+      Get.dialog( PhotoUploader(imagePath: imageFile!.path,),
+      barrierDismissible: false);
     }else{
       showSnackbar(title: "", message: 'No file selected');
     }
