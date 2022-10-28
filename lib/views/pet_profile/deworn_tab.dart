@@ -8,44 +8,44 @@ class DewormTab extends StatelessWidget {
     color: Colors.grey.shade600);
   final TextStyle headerStyle =  TextStyle(
     fontSize: 16,
+    fontWeight: FontWeight.w700,
     color: Colors.grey.shade700);
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      physics: const BouncingScrollPhysics(),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                width: 80,
-                child: Text(
-                  'DATE',
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              width: 80,
+              child: Text(
+                'DATE',
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.clip,
+                style: headerStyle,
+              ),
+            ),
+            Expanded(
+              child: Text('DEWORMER',
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.clip,
-                  style: style,
-                ),
-              ),
-              Expanded(
-                child: Text('DEWORMER',
-                    textAlign: TextAlign.center,
-                    overflow: TextOverflow.clip,
-                    style: style),
-              ),
-              Expanded(
-                child: Text('VET',
-                    textAlign: TextAlign.center,
-                    overflow: TextOverflow.clip,
-                    style: style),
-              ),
-            ],
-          ),
-          ListView.separated(
+                  style: headerStyle),
+            ),
+            Expanded(
+              child: Text('VET',
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.clip,
+                  style: headerStyle),
+            ),
+          ],
+        ),
+        Flexible(
+          child: ListView.separated(
               primary: false,
+              scrollDirection: Axis.vertical,
               shrinkWrap: true,
               separatorBuilder: (context, index) => const SizedBox(
                     height: 16,
@@ -81,8 +81,8 @@ class DewormTab extends StatelessWidget {
                       ),
                     ],
                   )),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

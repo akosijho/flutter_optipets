@@ -48,7 +48,7 @@ class PetProfileView extends StatelessWidget {
                         height: 8,
                       ),
                       Container(
-                        height: 340,
+                        height: 260,
                         decoration: BoxDecoration(
                           color: Theme.of(context).scaffoldBackgroundColor,
                           borderRadius: BorderRadius.circular(8),
@@ -66,34 +66,42 @@ class PetProfileView extends StatelessWidget {
                             initialIndex: 0,
                             child: Column(
                               children: [
-                                TabBar(
-                                    indicatorColor:
-                                        Theme.of(context).primaryColor,
-                                    physics: const BouncingScrollPhysics(),
-                                    tabs: [
-                                      Tab(
-                                        child: Text(
-                                          'Deworming',
-                                          style: TextStyle(
-                                            color: Colors.grey.shade600,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w700,
+                                Container(
+                                  decoration: BoxDecoration(
+                                    border: Border(
+                                      bottom: BorderSide(
+                                        color: Colors.grey.shade600
+                                      ))
+                                  ),
+                                  child: TabBar(
+                                      indicatorColor:
+                                          Theme.of(context).primaryColor,
+                                      physics: const BouncingScrollPhysics(),
+                                      tabs: [
+                                        Tab(
+                                          child: Text(
+                                            'Deworming',
+                                            style: TextStyle(
+                                              color: Colors.grey.shade600,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w700,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Tab(
-                                        child: Text(
-                                          'Vaccination',
-                                          style: TextStyle(
-                                            color: Colors.grey.shade600,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w700,
+                                        Tab(
+                                          child: Text(
+                                            'Vaccination',
+                                            style: TextStyle(
+                                              color: Colors.grey.shade600,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w700,
+                                            ),
                                           ),
-                                        ),
-                                      )
-                                    ]),
+                                        )
+                                      ]),
+                                ),
                                 SizedBox(
-                                  height: 288,
+                                  height: 208,
                                   child: TabBarView(
                                       physics: const BouncingScrollPhysics(),
                                       children: [
