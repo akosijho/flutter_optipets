@@ -5,18 +5,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 @LazySingleton(asType: FirestoreService)
 class FirestoreServiceImpl implements FirestoreService{
 
-  
-  // initialize firestore instance
-  final _db = FirebaseFirestore.instance;
-
   // initialize firestore instance
   @override
-  late CollectionReference<Object?> petRef = _db.collection('pets');
+  CollectionReference<Object?> get petRef => FirebaseFirestore.instance.collection('users');
 
-  // initialize firestore instance
+
+  // petReference
   @override
-  late CollectionReference<Object?> userRef  = _db.collection('users');
-
-
+  CollectionReference<Object?> get userRef => FirebaseFirestore.instance.collection('pets');
 
 }

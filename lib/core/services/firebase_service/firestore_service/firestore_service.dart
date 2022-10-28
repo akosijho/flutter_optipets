@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 abstract class FirestoreService {
   
 // initialize firestore instance
-  late CollectionReference userRef;
+  final CollectionReference userRef = FirebaseFirestore.instance.collection('users');
   // petReference
-  late CollectionReference petRef;
+  final CollectionReference petRef = FirebaseFirestore.instance.collection('pets');
 }

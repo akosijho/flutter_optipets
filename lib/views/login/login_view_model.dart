@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/app/app.locator.dart';
 import 'package:flutter_optipets/app/app.router.dart';
-import 'package:flutter_optipets/core/services/firebase_service/firestore_service/firestore_service.dart';
 import 'package:flutter_optipets/models/user_object.dart';
+import 'package:flutter_optipets/utils/constants.dart';
 import 'package:flutter_optipets/views/application/application_view_model.dart';
 import 'package:flutter_optipets/views/widgets/show_snackbar.dart';
 import 'package:stacked/stacked.dart';
@@ -11,9 +11,8 @@ import 'package:stacked/stacked.dart';
 class LoginViewModel extends BaseViewModel {
   final ApplicationViewModel applicationViewModel =
       locator<ApplicationViewModel>();
-  final FirestoreService firestoreService = locator<FirestoreService>();
   TextEditingController usernameFieldController = TextEditingController();
-  TextEditingController passwordFieldController = TextEditingController();
+  TextEditingController passwordFieldController = TextEditingController(); 
 
   // signin anonymously
   void signInAnon() async {
@@ -38,7 +37,7 @@ class LoginViewModel extends BaseViewModel {
       if (user != null) {
         // applicationViewModel.userObject = user;
         //get user details from firestore
-        firestoreService.userRef.doc(user.uid).get().then(
+        userRef.doc(user.uid).get().then(
           (doc) {
             applicationViewModel.userObject =
                 UserObject.fromJson(doc.data() as Map<String, dynamic>);

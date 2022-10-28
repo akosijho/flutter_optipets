@@ -1,4 +1,7 @@
+// ignore_for_file: unused_import
+
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +21,6 @@ import 'package:stacked/stacked_annotations.dart';
 class SplashScreenViewModel extends ChangeNotifier {
   final ApplicationViewModel applicationViewModel =
       locator<ApplicationViewModel>();
-  final FirestoreService firestoreService = locator<FirestoreService>();
   late StreamSubscription connectivitySubscription;
   late StreamSubscription<User?> authChange;
   bool isConnected = false;
@@ -34,7 +36,7 @@ class SplashScreenViewModel extends ChangeNotifier {
       } else {
 
         //get user data from firestore
-         firestoreService.userRef
+         userRef
             .doc(user.uid).get().then(
           (doc) {
             applicationViewModel.userObject = UserObject.fromJson(doc.data() as Map<String, dynamic>);

@@ -8,6 +8,7 @@ class PetObject extends Equatable {
       this.breed,
       this.color,
       this.birthday,
+      this.weight,
       this.sex,
       this.owner});
   
@@ -17,6 +18,7 @@ class PetObject extends Equatable {
   final String? breed;
   final String? color;
   final String? birthday;
+  final String? weight;
   final String? sex;
   final String? owner;
 
@@ -27,6 +29,7 @@ class PetObject extends Equatable {
         breed: json['breed'] as String?,
         color: json['color'] as String?,
         birthday: json['birthday'] as String?,
+        weight: json['weight'] as String?,
         sex: json['sex'] as String?,
         owner: json['owner'] as String?,
       );
@@ -39,6 +42,7 @@ class PetObject extends Equatable {
       if (breed != null) "breed": breed,
       if (color != null) "color": color,
       if (birthday != null) "birthday": birthday,
+      if (weight != null) "weight": weight,
       if (sex != null) "sex": sex,
       if (owner != null) "owner": owner,
     };
