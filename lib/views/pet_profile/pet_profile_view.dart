@@ -6,6 +6,7 @@ import 'package:flutter_optipets/utils/svg_icons.dart';
 import 'package:flutter_optipets/utils/svg_images.dart';
 import 'package:flutter_optipets/views/pet_profile/deworn_tab.dart';
 import 'package:flutter_optipets/views/pet_profile/pet_profile_view_model.dart';
+import 'package:flutter_optipets/views/pet_profile/vaccination_tab.dart';
 import 'package:flutter_optipets/views/widgets/my_circular_progress.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -44,7 +45,7 @@ class PetProfileView extends StatelessWidget {
                           petObject.birthday ?? '',
                           petObject.sex ?? ''),
                       const SizedBox(
-                        height: 16,
+                        height: 8,
                       ),
                       Container(
                         height: 340,
@@ -97,7 +98,7 @@ class PetProfileView extends StatelessWidget {
                                       physics: const BouncingScrollPhysics(),
                                       children: [
                                         DewormTab(),
-                                        DewormTab(),
+                                        VaccinationTab()
                                       ]),
                                 )
                               ],

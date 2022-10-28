@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class DewormTab extends StatelessWidget {
-   DewormTab({super.key});
+class VaccinationTab extends StatelessWidget{
+  VaccinationTab({super.key});
 
-  final TextStyle style =  TextStyle(
+   final TextStyle style =  TextStyle(
     fontSize: 12,
     color: Colors.grey.shade600);
   final TextStyle headerStyle =  TextStyle(
     fontSize: 16,
     color: Colors.grey.shade700);
-
+  
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+   return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       physics: const BouncingScrollPhysics(),
       child: Column(
@@ -31,7 +31,7 @@ class DewormTab extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: Text('DEWORMER',
+                child: Text('VACCINE',
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.clip,
                     style: style),
@@ -66,7 +66,7 @@ class DewormTab extends StatelessWidget {
                                 style: style),
                           ),
                           Expanded(
-                            child: Text('Nematocide\nPyrantel Embonate Suspension',
+                            child: Text('Quantom Dog 5 n\'1',
                                 textAlign: TextAlign.center,
                                 overflow: TextOverflow.clip,
                                 style: style),
@@ -85,4 +85,5 @@ class DewormTab extends StatelessWidget {
       ),
     );
   }
+
 }
