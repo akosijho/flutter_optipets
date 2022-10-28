@@ -18,6 +18,7 @@ class PhotoUploader extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<PhotoUploaderViewModel>.reactive(
         viewModelBuilder: () => PhotoUploaderViewModel(path: imagePath),
+        disposeViewModel: false,
         onModelReady: (model) => model.init(),
         builder: (context, model, child) {
           return AlertDialog(

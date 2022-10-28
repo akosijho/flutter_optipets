@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/app/app.locator.dart';
 import 'package:flutter_optipets/app/app.router.dart';
@@ -33,17 +32,18 @@ class CustomerProfileViewModel extends ChangeNotifier{
   bool picked = false;
 
   //image picker
-  Future picker() async {
+  Future<void> picker() async {
     //picks the file
     final pick = await imagePicker.pickImage(source: ImageSource.gallery);
 
     if(pick != null){
       imageFile = File(pick.path);
       picked = true;
-      Get.dialog( PhotoUploader(imagePath: imageFile!.path,),
-      barrierDismissible: false);
+      // applicationViewModel.navigationService.pop();
+      // await Get.dialog( PhotoUploader(imagePath: imageFile!.path,),
+      // barrierDismissible: false);
     }else{
-      showSnackbar(title: "", message: 'No file selected');
+      showSnackbar(title: "No file selected", message: '');
     }
     notifyListeners();
   }

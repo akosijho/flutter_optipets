@@ -35,11 +35,10 @@ class LoginViewModel extends BaseViewModel {
       final user = await applicationViewModel.auth
           .signInWithCredentials(email, password);
       if (user != null) {
-        // applicationViewModel.userObject = user;
         //get user details from firestore
-        userRef.doc(user.uid).get().then(
+        await userRef.doc(user.uid).get().then(
           (doc) {
-            applicationViewModel.userObject =
+             applicationViewModel.userObject =
                 UserObject.fromJson(doc.data() as Map<String, dynamic>);
           },
         );
