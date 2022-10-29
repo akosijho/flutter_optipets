@@ -14,8 +14,7 @@ import 'package:get/get.dart';
 import 'package:stacked/stacked.dart';
 
 class PetProfileView extends StatelessWidget {
-  const PetProfileView({Key? key, required this.petObject})
-      : super(key: key);
+  const PetProfileView({Key? key, required this.petObject}) : super(key: key);
 
   final PetObject petObject;
   @override
@@ -29,7 +28,7 @@ class PetProfileView extends StatelessWidget {
             builder: (context, snapshot) {
               if (snapshot.hasData && snapshot.data != null) {
                 return Scaffold(
-                  appBar: thisAppbar(),
+                  appBar: thisAppbar(model: model),
                   backgroundColor:
                       Theme.of(context).scaffoldBackgroundColor.withAlpha(235),
                   body: ListView(
@@ -41,7 +40,9 @@ class PetProfileView extends StatelessWidget {
                       petStats(
                           SvgIcons.pawOutlined,
                           petObject.breed ?? '',
-                          snapshot.data!.weight != null ? '${snapshot.data!.weight} kg' : "10.3 kg",
+                          snapshot.data!.weight != null
+                              ? '${snapshot.data!.weight} kg'
+                              : "10.3 kg",
                           petObject.birthday ?? '',
                           petObject.sex ?? ''),
                       const SizedBox(
@@ -68,11 +69,9 @@ class PetProfileView extends StatelessWidget {
                               children: [
                                 Container(
                                   decoration: BoxDecoration(
-                                    border: Border(
-                                      bottom: BorderSide(
-                                        color: Colors.grey.shade600
-                                      ))
-                                  ),
+                                      border: Border(
+                                          bottom: BorderSide(
+                                              color: Colors.grey.shade600))),
                                   child: TabBar(
                                       indicatorColor:
                                           Theme.of(context).primaryColor,
@@ -125,7 +124,7 @@ class PetProfileView extends StatelessWidget {
     );
   }
 
-  PreferredSize thisAppbar() {
+  PreferredSize thisAppbar({required PetProfileViewModel model}) {
     return PreferredSize(
       preferredSize: Size(MediaQuery.of(Get.context!).size.width, 80),
       child: Container(
@@ -159,27 +158,44 @@ class PetProfileView extends StatelessWidget {
                     ),
                   ),
                 ]),
-            Container(
-                width: 56,
-                height: 56,
-                decoration: const BoxDecoration(shape: BoxShape.circle),
-                child: CircleAvatar(
-                        backgroundColor: Colors.primaries[Random().nextInt(Colors.primaries.length)],
-                        backgroundImage: petObject.displayImage != null
-                            ? CachedNetworkImageProvider(
-                                petObject.displayImage!)
-                            : null,
-                        child: Text(petObject.name![0],
+            PopupMenuButton(
+              child: model.ongoing ? myCircularProgress() : Container(
+                  width: 64,
+                  height: 64,
+                  decoration: const BoxDecoration(shape: BoxShape.circle),
+                  child: CircleAvatar(
+                    backgroundColor: Colors
+                        .primaries[Random().nextInt(Colors.primaries.length)],
+                    backgroundImage: petObject.displayImage != null
+                        ? CachedNetworkImageProvider(petObject.displayImage!)
+                        : null,
+                    child: petObject.displayImage == null ? Text(petObject.name![0],
                         style: const TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.w700,
                           color: Colors.white,
-                        )),
-                      )),
+                        )) : null,
+                  )),
+              itemBuilder: (context) => [
+                PopupMenuItem(
+                    child: popupMenuItem(
+                        'Change Photo', Icons.add_photo_alternate_outlined),
+                        onTap: (){
+                            model.pickImage();
+                        },),
+                PopupMenuItem(
+                    child:
+                        popupMenuItem('Chat with owner', Icons.chat_outlined))
+              ],
+            ),
           ],
         ),
       ),
     );
+  }
+
+  ListTile popupMenuItem(String text, IconData icon) {
+    return ListTile(leading: Icon(icon), dense: true, title: Text(text));
   }
 
   Widget petStats(String specieIcon, String breed, String weight,

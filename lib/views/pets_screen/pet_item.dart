@@ -65,12 +65,12 @@ class PetItem extends StatelessWidget {
                             ? CachedNetworkImageProvider(
                                 petObject.displayImage!)
                             : null,
-                        child: Text(petObject.name![0],
+                        child:  petObject.displayImage == null ? Text(petObject.name![0],
                         style: const TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.w700,
                           color: Colors.white,
-                        )),
+                        )) : null,
                       )
                       ),
                   const SizedBox(
