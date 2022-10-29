@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "name": "Flutter (SM G532G DS)",
+            "program": "lib/main.dart",
+            "deviceId": "192.168.0.195:5555",
+            "request": "launch",
+            "type": "dart"
+        }
+    ]
+}

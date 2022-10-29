@@ -5,18 +5,15 @@ import 'package:flutter_optipets/models/pet_object.dart';
 import 'package:flutter_optipets/utils/svg_icons.dart';
 import 'package:flutter_optipets/utils/svg_images.dart';
 import 'package:flutter_optipets/views/application/application_view_model.dart';
-import 'package:flutter_optipets/views/pets_screen/pet_screen_view_model.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:stacked/stacked.dart';
 
-class PetItem extends ViewModelWidget<PetScreenVieModel> {
-  PetItem({
-    Key? key,
+class PetItem extends StatelessWidget {
+  PetItem({super.key, 
     required this.petId,
     required this.petObject,
     required this.showActions,
     required this.isInChatPage,
-  }) : super(key: key);
+  });
 
   final String petId;
   final PetObject petObject;
@@ -25,7 +22,7 @@ class PetItem extends ViewModelWidget<PetScreenVieModel> {
       locator<ApplicationViewModel>();
 
   @override
-  Widget build(BuildContext context, PetScreenVieModel viewModel) {
+  Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
         isInChatPage
@@ -43,15 +40,9 @@ class PetItem extends ViewModelWidget<PetScreenVieModel> {
           color: Theme.of(context).scaffoldBackgroundColor,
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(16),
-          // border: Border.all(
-          //   width: 2,
-          //   style: BorderStyle.solid,
-          //   color: Colors.grey,
-          // ),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.4), //color of shadow
-              // spreadRadius: 5, //spread radius
               blurRadius: 4, // blur radius
               offset: const Offset(0, 4),
             ),

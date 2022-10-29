@@ -1,33 +1,39 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_optipets/app/app.locator.dart';
+import 'package:flutter_optipets/models/pet_object.dart';
 import 'package:flutter_optipets/models/user_object.dart';
+import 'package:flutter_optipets/utils/constants.dart';
 import 'package:flutter_optipets/views/application/application_view_model.dart';
 import 'package:stacked/stacked.dart';
 
 class PetScreenVieModel extends BaseViewModel {
   final ApplicationViewModel applicationViewModel =
       locator<ApplicationViewModel>();
+  String name = "";
+  String breed ='';
+  bool prevCount = true;
 
-  String name = "My name";
+  List<PetObject> thisPets =[];
+  List<String> petId = [];
 
-  // List<PetObject> myPets =[];
+  UserObject? user;
 
-  final CollectionReference myPets = FirebaseFirestore.instance
-      .collection('pets');
+  Stream<QuerySnapshot>? pets;
 
-  late UserObject user = applicationViewModel.userObject!;
-
-  late Stream<QuerySnapshot> pets = myPets
-      .where('owner', isEqualTo: user.uid)
-      .snapshots();
 
   void init() {
     user = applicationViewModel.userObject!;
-    pets = FirebaseFirestore.instance
-        .collection('pets')
-        .where('owner', isEqualTo: user.uid)
-        .snapshots();
-       
-    notifyListeners();
+    pets = petRef
+      .where('owner', isEqualTo: user!.uid)
+      .snapshots();
+      notifyListeners();
   }
+
+  Future<void> save()async {
+      await petRef.add({'name': name, 'breed': breed, 'owner':user!.uid});
+  }
+
+  Stream<List<PetObject>> petStream() => petRef.where('owner', isEqualTo: user!.uid)
+      .snapshots().map((event) => event.docs.map((e) => PetObject.fromJson(e.data())).toList());
+  
 }

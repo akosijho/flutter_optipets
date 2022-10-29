@@ -1,8 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/models/pet_object.dart';
+import 'package:flutter_optipets/utils/constants.dart';
 import 'package:flutter_optipets/utils/svg_icons.dart';
 import 'package:flutter_optipets/utils/svg_images.dart';
+import 'package:flutter_optipets/views/pet_profile/deworn_tab.dart';
 import 'package:flutter_optipets/views/pet_profile/pet_profile_view_model.dart';
+import 'package:flutter_optipets/views/pet_profile/vaccination_tab.dart';
 import 'package:flutter_optipets/views/widgets/my_circular_progress.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -20,13 +24,14 @@ class PetProfileView extends StatelessWidget {
       viewModelBuilder: () => PetProfileViewModel(petId: petId),
       disposeViewModel: false,
       builder: ((context, model, child) {
-        return StreamBuilder<PetObject>(
-            stream: model.pet,
+        return StreamBuilder<DocumentSnapshot>(
+            stream: model.petData,
             builder: (context, snapshot) {
               if (snapshot.hasData && snapshot.data != null) {
                 return Scaffold(
                   appBar: thisAppbar(),
-                  backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                  backgroundColor:
+                      Theme.of(context).scaffoldBackgroundColor.withAlpha(235),
                   body: ListView(
                     scrollDirection: Axis.vertical,
                     padding:
@@ -36,9 +41,77 @@ class PetProfileView extends StatelessWidget {
                       petStats(
                           SvgIcons.pawOutlined,
                           petObject.breed ?? '',
-                          "10.3 kg",
+                          petObject.weight ?? "10.3 kg",
                           petObject.birthday ?? '',
                           petObject.sex ?? ''),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Container(
+                        height: 260,
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                          borderRadius: BorderRadius.circular(8),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey
+                                  .withOpacity(0.4), //color of shadow
+                              blurRadius: 4, // blur radius
+                              offset: const Offset(0, 4),
+                            ),
+                          ],
+                        ),
+                        child: DefaultTabController(
+                            length: 2,
+                            initialIndex: 0,
+                            child: Column(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    border: Border(
+                                      bottom: BorderSide(
+                                        color: Colors.grey.shade600
+                                      ))
+                                  ),
+                                  child: TabBar(
+                                      indicatorColor:
+                                          Theme.of(context).primaryColor,
+                                      physics: const BouncingScrollPhysics(),
+                                      tabs: [
+                                        Tab(
+                                          child: Text(
+                                            'Deworming',
+                                            style: TextStyle(
+                                              color: Colors.grey.shade600,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                        ),
+                                        Tab(
+                                          child: Text(
+                                            'Vaccination',
+                                            style: TextStyle(
+                                              color: Colors.grey.shade600,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                        )
+                                      ]),
+                                ),
+                                SizedBox(
+                                  height: 208,
+                                  child: TabBarView(
+                                      physics: const BouncingScrollPhysics(),
+                                      children: [
+                                        DewormTab(),
+                                        VaccinationTab()
+                                      ]),
+                                )
+                              ],
+                            )),
+                      ),
                     ],
                   ),
                 );
@@ -103,9 +176,18 @@ class PetProfileView extends StatelessWidget {
       width: MediaQuery.of(Get.context!).size.width,
       height: 104,
       decoration: BoxDecoration(
-          shape: BoxShape.rectangle,
-          border: Border.all(color: Theme.of(Get.context!).disabledColor),
-          borderRadius: BorderRadius.circular(24)),
+        color: Theme.of(getContext).scaffoldBackgroundColor,
+        shape: BoxShape.rectangle,
+        // border: Border.all(color: Theme.of(Get.context!).disabledColor),
+        borderRadius: BorderRadius.circular(24),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.4), //color of shadow
+            blurRadius: 4, // blur radius
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         mainAxisSize: MainAxisSize.min,

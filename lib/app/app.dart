@@ -1,4 +1,8 @@
 import 'package:flutter_optipets/core/services/firebase_service/auth.dart';
+import 'package:flutter_optipets/core/services/firebase_service/firestore_service/firestore_service.dart';
+import 'package:flutter_optipets/core/services/firebase_service/firestore_service/firestore_service_impl.dart';
+import 'package:flutter_optipets/core/services/firebase_service/storage/storage.dart';
+import 'package:flutter_optipets/core/services/firebase_service/storage/storage_impl.dart';
 import 'package:flutter_optipets/core/services/firebase_services_impl/auth_impl.dart';
 import 'package:flutter_optipets/core/services/navigation/navigation_service_impl.dart';
 import 'package:flutter_optipets/core/services/navigation/navigation_sevice.dart';
@@ -28,5 +32,7 @@ import 'package:flutter_optipets/views/application/application_view_model.dart';
   LazySingleton(classType: NavigationServiceImpl, asType: NavigationService),
   LazySingleton(classType: SplashScreenViewModel, asType: SplashScreenViewModel),
   LazySingleton(classType: AuthImpl, asType: Auth),
+  LazySingleton(classType: FirestoreServiceImpl, asType: FirestoreService),
+  LazySingleton(classType: StorageImpl, asType: Storage),
 ])
 class App {}

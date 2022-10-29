@@ -4,7 +4,6 @@ import 'package:flutter_optipets/views/customer_profile/customer_profile_view_mo
 import 'package:flutter_optipets/views/customer_profile/profile_image.dart';
 import 'package:flutter_optipets/views/widgets/bottom_appbar.dart';
 import 'package:flutter_optipets/views/widgets/top_appbar.dart';
-
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:stacked/stacked.dart';
@@ -21,6 +20,7 @@ class CustomerProfileView extends StatelessWidget {
         builder: (context, viewModel, child) {
           return Scaffold(
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            resizeToAvoidBottomInset: false,
             appBar: myAppBar("Me"),
             body: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
@@ -28,7 +28,7 @@ class CustomerProfileView extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const ProfileImage(),
+                    ProfileImage(viewModel: viewModel,),
                     const SizedBox(
                       height: 32,
                     ),
