@@ -1,7 +1,9 @@
+import 'dart:math';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/models/user_object.dart';
 import 'package:flutter_optipets/utils/svg_icons.dart';
-import 'package:flutter_optipets/utils/svg_images.dart';
 import 'package:flutter_optipets/views/customer_profile/customer_profile_view_model.dart';
 import 'package:flutter_optipets/views/widgets/my_circular_progress.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -45,15 +47,22 @@ class ProfileImage extends StatelessWidget {
                                   width: 2,
                                 )),
                             child: CircleAvatar(
-                              backgroundColor:
-                                  Theme.of(context).scaffoldBackgroundColor,
-                              backgroundImage: snapshot.data!.displayImage !=
-                                      null
-                                  ? NetworkImage(snapshot.data!.displayImage!)
-                                  : null,
+                              backgroundColor: Colors.primaries[
+                                  Random().nextInt(Colors.primaries.length)],
+                              backgroundImage:
+                                  snapshot.data!.displayImage != null
+                                      ? CachedNetworkImageProvider(
+                                          snapshot.data!.displayImage!)
+                                      : null,
                               child: snapshot.data!.displayImage != null
                                   ? null
-                                  : Image.asset(SvgImages.tempProfile),
+                                  : Text(
+                                      '${snapshot.data!.firstName![0]}${snapshot.data!.lastName![0]}',
+                                      style: const TextStyle(
+                                        fontSize: 56,
+                                        fontWeight: FontWeight.w700,
+                                        color: Colors.white,
+                                      )),
                             ),
                           ),
                           Positioned(
@@ -93,7 +102,7 @@ class ProfileImage extends StatelessWidget {
 
                 if (snapshot.hasError) {
                   return const Center(
-                    child:  Text('Something went wrong'),
+                    child: Text('Something went wrong'),
                   );
                 }
 

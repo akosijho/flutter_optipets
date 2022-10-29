@@ -1,26 +1,18 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_optipets/models/pet_object.dart';
+import 'package:flutter_optipets/utils/constants.dart';
 import 'package:stacked/stacked.dart';
 
-class PetProfileViewModel extends BaseViewModel{
-  PetProfileViewModel({required this.petId});
+class PetProfileViewModel extends BaseViewModel {
+  PetProfileViewModel({required this.pet});
 
-  final String petId;
-  // final CollectionReference thisPet = FirebaseFirestore.instance.collection('pets');
-
-  late Stream<DocumentSnapshot> petData = FirebaseFirestore.instance.collection('pets').doc(petId).snapshots();
+  final PetObject pet;
 
   void init() async {
     // thisPet.doc(petId).listen()
   }
 
-  PetObject petObject(DocumentSnapshot documentSnapshot){
-    notifyListeners();
-    return PetObject.fromJson(documentSnapshot.data() as Map<String, dynamic>);
-  }
-
-  // Stream<PetObject> get pet{
-  //   notifyListeners();
-  //   return thisPet.doc(petId).snapshots().map(petObject);
-  // }
-} 
+  Stream<PetObject> petObject() => petRef
+      .doc(pet.id)
+      .snapshots()
+      .map((event) => PetObject.fromJson(event.data()!));
+}

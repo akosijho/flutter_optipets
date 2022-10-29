@@ -17,7 +17,7 @@ class PetScreenView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<PetScreenVieModel>.reactive(
         viewModelBuilder: () => PetScreenVieModel(),
-        disposeViewModel: false,
+        disposeViewModel: false, 
         onModelReady: (model) => model.init(),
         builder: (context, viewModel, child) {
           return Scaffold(
@@ -43,8 +43,7 @@ class PetScreenView extends StatelessWidget {
                               physics: const BouncingScrollPhysics(),
                               itemBuilder: (context, index) {
                                 
-                                return PetItem(
-                                  petId: 'qwe', 
+                                return PetItem( 
                                   petObject: snapshot.data![index], 
                                   isInChatPage: false,
                                   showActions: true,);

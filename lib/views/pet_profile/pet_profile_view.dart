@@ -1,9 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:math';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/models/pet_object.dart';
 import 'package:flutter_optipets/utils/constants.dart';
 import 'package:flutter_optipets/utils/svg_icons.dart';
-import 'package:flutter_optipets/utils/svg_images.dart';
 import 'package:flutter_optipets/views/pet_profile/deworn_tab.dart';
 import 'package:flutter_optipets/views/pet_profile/pet_profile_view_model.dart';
 import 'package:flutter_optipets/views/pet_profile/vaccination_tab.dart';
@@ -13,19 +14,18 @@ import 'package:get/get.dart';
 import 'package:stacked/stacked.dart';
 
 class PetProfileView extends StatelessWidget {
-  const PetProfileView({Key? key, required this.petId, required this.petObject})
+  const PetProfileView({Key? key, required this.petObject})
       : super(key: key);
 
-  final String petId;
   final PetObject petObject;
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<PetProfileViewModel>.reactive(
-      viewModelBuilder: () => PetProfileViewModel(petId: petId),
+      viewModelBuilder: () => PetProfileViewModel(pet: petObject),
       disposeViewModel: false,
       builder: ((context, model, child) {
-        return StreamBuilder<DocumentSnapshot>(
-            stream: model.petData,
+        return StreamBuilder<PetObject>(
+            stream: model.petObject(),
             builder: (context, snapshot) {
               if (snapshot.hasData && snapshot.data != null) {
                 return Scaffold(
@@ -41,7 +41,7 @@ class PetProfileView extends StatelessWidget {
                       petStats(
                           SvgIcons.pawOutlined,
                           petObject.breed ?? '',
-                          petObject.weight ?? "10.3 kg",
+                          snapshot.data!.weight != null ? '${snapshot.data!.weight} kg' : "10.3 kg",
                           petObject.birthday ?? '',
                           petObject.sex ?? ''),
                       const SizedBox(
@@ -163,7 +163,19 @@ class PetProfileView extends StatelessWidget {
                 width: 56,
                 height: 56,
                 decoration: const BoxDecoration(shape: BoxShape.circle),
-                child: Image.asset(SvgImages.temp)),
+                child: CircleAvatar(
+                        backgroundColor: Colors.primaries[Random().nextInt(Colors.primaries.length)],
+                        backgroundImage: petObject.displayImage != null
+                            ? CachedNetworkImageProvider(
+                                petObject.displayImage!)
+                            : null,
+                        child: Text(petObject.name![0],
+                        style: const TextStyle(
+                          fontSize: 32,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                        )),
+                      )),
           ],
         ),
       ),

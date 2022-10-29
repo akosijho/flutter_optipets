@@ -10,7 +10,8 @@ class PetObject extends Equatable {
       this.birthday,
       this.weight,
       this.sex,
-      this.owner});
+      this.owner,
+      this.displayImage});
   
   final String? id;
   final String? name;
@@ -21,6 +22,7 @@ class PetObject extends Equatable {
   final String? weight;
   final String? sex;
   final String? owner;
+  final String? displayImage;
 
   factory PetObject.fromJson(Map<String, dynamic> json) => PetObject(
         id: json['id'] as String?,
@@ -32,6 +34,7 @@ class PetObject extends Equatable {
         weight: json['weight'] as String?,
         sex: json['sex'] as String?,
         owner: json['owner'] as String?,
+        displayImage: json['displayImage'] as String?,
       );
 
   Map<String, dynamic> toFireStore() {
@@ -45,10 +48,11 @@ class PetObject extends Equatable {
       if (weight != null) "weight": weight,
       if (sex != null) "sex": sex,
       if (owner != null) "owner": owner,
+      if (displayImage != null) "displayImage": displayImage,
     };
   }
 
   @override
   List<Object?> get props =>
-      [id, name, specie, breed, color, birthday, sex, owner];
+      [id, name, specie, breed, color, birthday, sex, owner, displayImage];
 }
