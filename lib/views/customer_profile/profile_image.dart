@@ -1,9 +1,11 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/utils/svg_icons.dart';
 import 'package:flutter_optipets/utils/svg_images.dart';
 import 'package:flutter_optipets/views/customer_profile/customer_profile_view_model.dart';
+import 'package:flutter_optipets/views/widgets/my_circular_progress.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
 
@@ -12,6 +14,7 @@ class ProfileImage extends ViewModelWidget<CustomerProfileViewModel> {
 
   @override
   Widget build(BuildContext context, CustomerProfileViewModel viewModel) {
+    print(viewModel.user);
     return Container(
       height: 284,
       width: MediaQuery.of(context).size.width,
@@ -42,12 +45,11 @@ class ProfileImage extends ViewModelWidget<CustomerProfileViewModel> {
                     child: CircleAvatar(
                       backgroundColor:
                           Theme.of(context).scaffoldBackgroundColor,
-                      backgroundImage: viewModel.imageFile != null
-                          ? FileImage(File(viewModel.imageFile!.path))
-                          : null,
-                      child: viewModel.imageFile != null
-                          ? null
-                          : Image.asset(SvgImages.tempProfile),
+                      child: viewModel.user?.displayImage != null
+                          ? CachedNetworkImage(imageUrl: viewModel.user!.displayImage!,
+                          progressIndicatorBuilder:(context, url, downloadProgress) => myCircularProgress(),
+                          errorWidget: (context, url, error) => const Icon(Icons.error),)
+                          :  Image.asset(SvgImages.tempProfile), 
                     ),
                   ),
                   Positioned(

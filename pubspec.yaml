@@ -36,7 +36,7 @@ dependencies:
   flutter_svg: ^1.1.1+1 #load svg format images
   equatable: ^2.0.3
   shared_preferences: ^2.0.15
-  cached_network_image: ^3.2.1
+  cached_network_image: ^3.2.2
   stacked_services: ^0.9.5
   injectable: ^1.5.3
 

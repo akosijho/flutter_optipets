@@ -39,9 +39,9 @@ class CustomerProfileViewModel extends ChangeNotifier{
     if(pick != null){
       imageFile = File(pick.path);
       picked = true;
-      // applicationViewModel.navigationService.pop();
-      // await Get.dialog( PhotoUploader(imagePath: imageFile!.path,),
-      // barrierDismissible: false);
+      applicationViewModel.navigationService.pop();
+      await Get.dialog( PhotoUploader(imagePath: imageFile!.path,),
+      barrierDismissible: false);
     }else{
       showSnackbar(title: "No file selected", message: '');
     }

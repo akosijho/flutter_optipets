@@ -9,6 +9,7 @@ class UserObject extends Equatable {
     this.lastName,
     this.address,
     this.contacts,
+    this.displayImage,
   });
 
   final String? uid;
@@ -18,6 +19,7 @@ class UserObject extends Equatable {
   final String? address;
   final String? contacts;
   final String? role;
+  final String? displayImage;
 
   factory UserObject.fromJson(Map<String, dynamic> json) {
     return UserObject(
@@ -27,6 +29,8 @@ class UserObject extends Equatable {
       lastName: json["lastName"] as String,
       address: json['address'] as String,
       contacts: json['contacts'] as String,
+      displayImage: json['displayImage'] as String?,
+      role: json['role'] as String?,
     );
   }
 
@@ -41,5 +45,14 @@ class UserObject extends Equatable {
       };
 
   @override
-  List<Object?> get props => [uid, firstName, middleName, lastName, address, contacts, role];
+  List<Object?> get props => [
+        uid,
+        firstName,
+        middleName,
+        lastName,
+        address,
+        contacts,
+        role,
+        displayImage
+      ];
 }
