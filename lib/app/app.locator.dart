@@ -4,10 +4,9 @@
 // StackedLocatorGenerator
 // **************************************************************************
 
-// ignore_for_file: public_member_api_docs, unused_import
+// ignore_for_file: public_member_api_docs, implementation_imports, depend_on_referenced_packages
 
-import 'package:stacked/stacked.dart';
-import 'package:stacked/stacked_annotations.dart';
+import 'package:stacked_core/stacked_core.dart';
 
 import '../core/services/firebase_service/auth.dart';
 import '../core/services/firebase_service/firestore_service/firestore_service.dart';
@@ -22,7 +21,8 @@ import '../views/splash_screen/splash_screen_view_model.dart';
 
 final locator = StackedLocator.instance;
 
-void setupLocator({String? environment, EnvironmentFilter? environmentFilter}) {
+Future<void> setupLocator(
+    {String? environment, EnvironmentFilter? environmentFilter}) async {
 // Register environments
   locator.registerEnvironment(
       environment: environment, environmentFilter: environmentFilter);

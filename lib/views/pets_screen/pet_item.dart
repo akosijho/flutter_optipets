@@ -1,21 +1,21 @@
+import 'dart:math';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_optipets/app/app.locator.dart';
 import 'package:flutter_optipets/app/app.router.dart';
 import 'package:flutter_optipets/models/pet_object.dart';
 import 'package:flutter_optipets/utils/svg_icons.dart';
-import 'package:flutter_optipets/utils/svg_images.dart';
 import 'package:flutter_optipets/views/application/application_view_model.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class PetItem extends StatelessWidget {
-  PetItem({super.key, 
-    required this.petId,
-    required this.petObject,
-    required this.showActions,
-    required this.isInChatPage,
-  });
+  PetItem(
+      {super.key,
+      required this.petObject,
+      required this.showActions,
+      required this.isInChatPage});
 
-  final String petId;
   final PetObject petObject;
   final bool showActions, isInChatPage;
   final ApplicationViewModel applicationViewModel =
@@ -29,9 +29,8 @@ class PetItem extends StatelessWidget {
             ? await applicationViewModel.navigationService
                 .pushNamed(Routes.conversationView)
             : await applicationViewModel.navigationService.pushNamed(
-                Routes.petProfile,
-                arguments: PetProfileViewArguments(
-                    petId: petId, petObject: petObject));
+                Routes.petProfile, arguments: PetProfileViewArguments(petObject: petObject)
+              );
       },
       child: Container(
         height: 72,
@@ -60,7 +59,20 @@ class PetItem extends StatelessWidget {
                       width: 56,
                       height: 56,
                       decoration: const BoxDecoration(shape: BoxShape.circle),
-                      child: Image.asset(SvgImages.temp)),
+                      child: CircleAvatar(
+                        backgroundColor: Colors.primaries[Random().nextInt(Colors.primaries.length)],
+                        backgroundImage: petObject.displayImage != null
+                            ? CachedNetworkImageProvider(
+                                petObject.displayImage!)
+                            : null,
+                        child:  petObject.displayImage == null ? Text(petObject.name![0],
+                        style: const TextStyle(
+                          fontSize: 32,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                        )) : null,
+                      )
+                      ),
                   const SizedBox(
                     width: 8,
                   ),

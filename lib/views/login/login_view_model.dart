@@ -33,13 +33,13 @@ class LoginViewModel extends BaseViewModel {
     setBusy(true);
     try {
       final user = await applicationViewModel.auth
-          .signInWithCredentials(email, password);
+          .signInWithCredentials('$email@boholvet.bh'.replaceAll(' ', ''), password);
       if (user != null) {
         //get user details from firestore
         await userRef.doc(user.uid).get().then(
           (doc) {
              applicationViewModel.userObject =
-                UserObject.fromJson(doc.data() as Map<String, dynamic>);
+                UserObject.fromJson(doc.data()!);
           },
         );
         await applicationViewModel.navigationService

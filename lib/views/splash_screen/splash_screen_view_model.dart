@@ -39,7 +39,7 @@ class SplashScreenViewModel extends ChangeNotifier {
          await userRef
             .doc(user.uid).get().then(
           (doc) {
-            applicationViewModel.userObject = UserObject.fromJson(doc.data() as Map<String, dynamic>);
+            applicationViewModel.userObject = UserObject.fromJson(doc.data()!);
           },
         );
 

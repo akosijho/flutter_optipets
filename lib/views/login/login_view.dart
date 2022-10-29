@@ -87,13 +87,8 @@ class LoginView extends StatelessWidget with InputValidationMixin {
                                       fontSize: 16,
                                       color: Color(0xff52575D),
                                     ),
-                                    validator: (email) {
-                                      if (isEmailValid(email!)) {
-                                        return null;
-                                      } else {
-                                        return 'Enter a valid email address';
-                                      }
-                                    }),
+                                    validator: (email) => email!.isEmpty ? 'Enter your usename' : null,
+                                    ),
                                 const SizedBox(
                                   height: 16,
                                 ),
