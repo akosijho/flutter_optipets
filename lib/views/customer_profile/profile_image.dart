@@ -30,7 +30,6 @@ class ProfileImage extends StatelessWidget {
               stream: viewModel.userStream(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  print(snapshot.data);
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [

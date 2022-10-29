@@ -20,6 +20,7 @@ class CustomerProfileView extends StatelessWidget {
         builder: (context, viewModel, child) {
           return Scaffold(
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            resizeToAvoidBottomInset: false,
             appBar: myAppBar("Me"),
             body: SingleChildScrollView(
                 scrollDirection: Axis.vertical,

@@ -18,7 +18,8 @@ class PhotoUploader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<PhotoUploaderViewModel>.reactive(
-        viewModelBuilder: () => PhotoUploaderViewModel(path: imagePath, docId: docId),
+        viewModelBuilder: () =>
+            PhotoUploaderViewModel(path: imagePath, docId: docId),
         disposeViewModel: false,
         onModelReady: (model) => model.init(),
         builder: (context, model, child) {
@@ -27,13 +28,14 @@ class PhotoUploader extends StatelessWidget {
             title: const Text('Save Image'),
             content: model.isBusy
                 ? const Center(
-                  child: CircularProgressIndicator(
-                    color: MyColors.blueButtonColor
-                  ),
-                )
+                    heightFactor: 80,
+                    widthFactor: 80,
+                    child: CircularProgressIndicator(
+                        color: MyColors.blueButtonColor),
+                  )
                 : Image.file(
                     model.img!,
-                    // fit: BoxFit.fill,
+                    fit: BoxFit.contain,
                   ),
             actions: [
               SizedBox(
@@ -41,27 +43,29 @@ class PhotoUploader extends StatelessWidget {
                 height: 54,
                 child: GFButton(
                   onPressed: () {
-                     applicationViewModel.navigationService.pop();
+                    applicationViewModel.navigationService.pop();
                   },
                   shape: GFButtonShape.pills,
                   type: GFButtonType.outline,
                   text: 'Cancel',
-                  textStyle:const TextStyle(fontSize: 20,
-                  color: MyColors.blueButtonColor),),
+                  textStyle: const TextStyle(
+                      fontSize: 20, color: MyColors.blueButtonColor),
+                ),
               ),
               SizedBox(
                 width: 120,
                 height: 54,
-                child:  GFButton(
+                child: GFButton(
                   onPressed: () async {
-                     await model.uploadImage();
-                     applicationViewModel.navigationService.pop();
+                    await model.uploadImage();
+                    applicationViewModel.navigationService.pop();
                   },
                   shape: GFButtonShape.pills,
                   type: GFButtonType.solid,
                   text: 'Save',
-                  textStyle:const TextStyle(fontSize: 20,
-                  color: GFColors.WHITE),),
+                  textStyle:
+                      const TextStyle(fontSize: 20, color: GFColors.WHITE),
+                ),
               )
             ],
           );
@@ -80,11 +84,13 @@ class PhotoUploaderViewModel extends BaseViewModel {
     setBusy(false);
   }
 
-  Future<void> uploadImage() async{
+  Future<void> uploadImage() async {
     setBusy(true);
-    final ref = storageRef.child('$docId').child('display'); 
+    final ref = storageRef.child('$docId').child('display');
     await ref.putFile(img!);
-    await userRef.doc(docId!).update({"displayImage": await ref.getDownloadURL()});
+    await userRef
+        .doc(docId!)
+        .update({"displayImage": await ref.getDownloadURL()});
     setBusy(false);
   }
 }
