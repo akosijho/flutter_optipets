@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,3 +11,5 @@ var deviceHeight = MediaQuery.of(Get.context!).size.height;
 var userRef = FirebaseFirestore.instance.collection('users');
 // pet collection instance
 var petRef = FirebaseFirestore.instance.collection('pets');
+// firebase storage instance
+var storageRef = FirebaseStorage.instance.ref();

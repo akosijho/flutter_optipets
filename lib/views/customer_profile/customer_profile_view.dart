@@ -27,7 +27,7 @@ class CustomerProfileView extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const ProfileImage(),
+                    ProfileImage(viewModel: viewModel,),
                     const SizedBox(
                       height: 32,
                     ),
