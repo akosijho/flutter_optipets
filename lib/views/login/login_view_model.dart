@@ -33,7 +33,7 @@ class LoginViewModel extends BaseViewModel {
     setBusy(true);
     try {
       final user = await applicationViewModel.auth
-          .signInWithCredentials('$email@boholvet.bh'.replaceAll(' ', ''), password);
+          .signInWithCredentials(email.replaceAll(' ', ''), password);
       if (user != null) {
         //get user details from firestore
         await userRef.doc(user.uid).get().then(

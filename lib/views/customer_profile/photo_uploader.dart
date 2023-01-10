@@ -6,6 +6,7 @@ import 'package:flutter_optipets/models/user_object.dart';
 import 'package:flutter_optipets/utils/constants.dart';
 import 'package:flutter_optipets/utils/my_colors.dart';
 import 'package:flutter_optipets/views/application/application_view_model.dart';
+import 'package:flutter_optipets/views/widgets/my_circular_progress.dart';
 import 'package:flutter_optipets/views/widgets/show_snackbar.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:image_picker/image_picker.dart';
@@ -42,8 +43,11 @@ class PhotoUploader extends StatelessWidget {
             content: SizedBox(
               height: 400,
               child: model.isBusy
-                  ? const CircularProgressIndicator(
-                      color: MyColors.blueButtonColor)
+                  ? SizedBox(
+                    height: 40,
+                    width: 40,
+                    child: myCircularProgress(),
+                  )
                   : Column(
                       children: [
                         Expanded(

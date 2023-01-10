@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter_optipets/app/app.locator.dart';
 import 'package:flutter_optipets/models/pet_object.dart';
 import 'package:flutter_optipets/utils/constants.dart';
